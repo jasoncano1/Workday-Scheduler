@@ -1,5 +1,20 @@
 let d = new Date();
-let store = localStorage.hours ? JSON.parse(localStorage.hours) : [];
+let store = [];
+
+
+const handleStorage = async () => {
+
+  store = await localStorage.hours ? JSON.parse(localStorage.hours) : [];
+  
+  if(store.length) {
+    store.forEach((el,i) => {
+      $('textarea').eq(i).val(el);
+    });
+  }
+};
+
+handleStorage();
+
 currentDay.innerText = `${d.toDateString()}, ${d.toLocaleTimeString()}`;
 
 const hours = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
@@ -20,3 +35,14 @@ hours.forEach((hour,i) => {
       </div>
   `
 });
+
+document.onclick = e => {
+  if (e.target.classList.contains("saveBtn")) {
+    store = [];
+    $('textarea').each((i,el) => {
+      store.push(el.value);
+    });
+
+    localStorage.hours = JSON.stringify(store);
+  }
+}
