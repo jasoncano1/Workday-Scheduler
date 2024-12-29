@@ -3,76 +3,71 @@ body {
   font-size: 16px;
 }
 
+header {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+header * {
+  margin: 5px;
+}
+
 #main {
-  border: 2px solid black;
+
+  /* border: 2px solid black; */
   height: 60vh;
   width: 80%;
-  margin: 0 auto;
+  margin: 20px auto;
   display: flex;
   justify-content: space-between;
   padding: 0;
 }
 
-#main > div {
-  border: 1px solid #000;
-  padding: 5px;
-  width: 18%;
+section {
+  text-align: center;
+  border: 2px solid #000;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: space-around;
+  padding: 5px;
+  width: 18%;
+  background: lightblue;
 }
 
-textarea {
-  background: transparent;
-  border: none;
-  resize: none;
-  color: #000000;
-  border-left: 1px solid black;
-  padding: 10px;
+section:nth-child(1) {
+  background: #e67171d1;
 }
 
-.description {
-  white-space: pre-wrap;
+section:nth-child(2) {
+  background: lightgray;
 }
 
-.time-block {
-  border-radius: 15px;
+/* section:nth-child(2) * {
+  background: lightgray;
+} */
+
+section:nth-child(3) {
+  background: lightblue;
 }
 
-.row {
-  border-top: 1px solid white;
+section div {
+  display: flex;
+  /* border: 1px solid #000; */
+} 
+
+section div h5 {
+  margin: 0;
+  width: 20%;
 }
 
-.hour {
-  background-color: #ffffff;
-  color: #000000;
-  border-top: 1px dashed #000000;
+section div input[type=checkbox] {
+  width: 10%;
 }
 
-.past {
-  background-color: #d3d3d3;
-  color: white;
+section div input {
+  width: 70%;
+  margin: 0 3px;
 }
 
-.present {
-  background-color: #ff6961;
-  color: white;
-}
-
-.future {
-  background-color: #77dd77;
-  color: white;
-}
-
-.saveBtn {
-  border-left: 1px solid black;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
-  background-color: #06aed5;
-  color: white;
-}
-
-.saveBtn i:hover {
-  font-size: 20px;
-  transition: all 0.3s ease-in-out;
-}

@@ -23,14 +23,18 @@ const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
 weekdays.forEach(day => {
   main.innerHTML += `
-    <div id=${day}>
+    <section id=${day}>
       <h5>${day}</h5>
-    </div>`;
+    </section>`;
 
     let div=document.getElementById(day);
     hours.forEach(hour => {
         div.innerHTML += `
-          <div>${hour}</div>
+          <div>
+            <h5>${hour}</h5>
+            <input />
+            <input type="checkbox" />
+          </div>
         `
       
     });
