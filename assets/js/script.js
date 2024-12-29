@@ -32,13 +32,18 @@ weekdays.forEach(day => {
         div.innerHTML += `
           <div>
             <h5>${hour}</h5>
-            <input />
+            <input onChange="handleChange(this, '${day} ${hour}')" />
             <input type="checkbox" />
           </div>
         `
-      
     });
 });
+
+const handleChange = (e, dayTime) => {
+  console.log(dayTime, e.value)
+  localStorage[dayTime]=e.value;
+  console.log(localStorage);
+}
 
 // hours.forEach((hour,i) => {
 //   let rH = i+9;
