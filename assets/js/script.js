@@ -2,10 +2,10 @@ let d = new Date();
 let store = [];
 let main = document.getElementById('main');
 
-
+console.log(d.getDay())
 const handleStorage = async () => {
 
-  store = await localStorage.hours ? JSON.parse(localStorage.hours) : [];
+  store = await localStorage.dayTime ? JSON.parse(localStorage.dayTime) : [];
   
   if(store.length) {
     store.forEach((el,i) => {
@@ -21,9 +21,9 @@ currentDay.innerText = `${d.toDateString()}, ${d.toLocaleTimeString()}`;
 const hours = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
 const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
-weekdays.forEach(day => {
+weekdays.forEach((day,i) => {
   main.innerHTML += `
-    <section id=${day}>
+    <section id=${day} class=${i+1<d.getDay() ? "past" : i+1==d.getDay() ? "present" : "future"} >
       <h5>${day}</h5>
     </section>`;
 
@@ -39,10 +39,13 @@ weekdays.forEach(day => {
     });
 });
 
-const handleChange = (e, dayTime) => {
-  console.log(dayTime, e.value)
-  localStorage[dayTime]=e.value;
-  console.log(localStorage);
+const handleChange = async (e, dayTime) => {
+
+  store = [ ...store, {[dayTime]:e.value}]
+  console.log(store);
+  
+  // store.push({[dayTime]:e.value});
+  // console.log(localStorage);
 }
 
 // hours.forEach((hour,i) => {

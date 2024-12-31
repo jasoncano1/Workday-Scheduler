@@ -36,22 +36,6 @@ section {
   background: lightblue;
 }
 
-section:nth-child(1) {
-  background: #e67171d1;
-}
-
-section:nth-child(2) {
-  background: lightgray;
-}
-
-/* section:nth-child(2) * {
-  background: lightgray;
-} */
-
-section:nth-child(3) {
-  background: lightblue;
-}
-
 section div {
   display: flex;
   /* border: 1px solid #000; */
@@ -71,3 +55,14 @@ section div input {
   margin: 0 3px;
 }
 
+.past {
+  background: #e67171d1;
+}
+
+.present {
+  background: #e0dd92d1;
+}
+
+.future {
+  background: lightblue;
+}
