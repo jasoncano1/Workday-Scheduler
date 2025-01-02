@@ -5,11 +5,21 @@ let main = document.getElementById('main');
 console.log(d.getDay())
 const handleStorage = async () => {
 
-  store = await localStorage.dayTime ? JSON.parse(localStorage.dayTime) : [];
-  
-  if(store.length) {
-    store.forEach((el,i) => {
-      $('textarea').eq(i).val(el);
+  store = await localStorage.dayTime ? JSON.parse(localStorage.dayTime) : {};
+  let keys = Object.keys(store)
+  if (keys) {
+    keys.forEach(dayTime => {
+      let [d, h] = dayTime.split("_");
+      let day = document.getElementById(d);
+      let hour = day.querySelector(`._${h}`);
+      let checkbox = day.querySelector(`._${h}[type=checkbox]`);
+      let value = store[dayTime].split("_");
+      hour.value = value[0];
+
+      if (value[1]) {
+        checkbox.checked = true;
+        hour.style.textDecoration = "line-through";
+      }
     });
   }
 };
@@ -21,55 +31,50 @@ currentDay.innerText = `${d.toDateString()}, ${d.toLocaleTimeString()}`;
 const hours = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
 const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
-weekdays.forEach((day,i) => {
+weekdays.forEach((day, i) => {
   main.innerHTML += `
-    <section id=${day} class=${i+1<d.getDay() ? "past" : i+1==d.getDay() ? "present" : "future"} >
+    <section id=${day} class=${i + 1 < d.getDay() ? "past" : i + 1 == d.getDay() ? "present" : "future"} >
       <h5>${day}</h5>
     </section>`;
 
-    let div=document.getElementById(day);
-    hours.forEach(hour => {
-        div.innerHTML += `
+  let div = document.getElementById(day);
+  hours.forEach(hour => {
+    div.innerHTML +=
+      div.classList.contains("past") ?
+        `
+      <div>
+      <h5>${hour}</h5>
+      <input class="_${hour}" disabled />
+      <input class="_${hour}" disabled type="checkbox" />
+      </div>
+      ` :
+        div.classList.contains("future") ?
+          `
           <div>
             <h5>${hour}</h5>
-            <input onChange="handleChange(this, '${day} ${hour}')" />
-            <input type="checkbox" />
+            <input class="_${hour}" onChange="handleChange(this, '${day}_${hour}')" />
+            <input class="_${hour}" disabled type="checkbox" />
+          </div>
+        `:
+          `
+          <div>
+            <h5>${hour}</h5>
+            <input class="_${hour}" onChange="handleChange(this, '${day}_${hour}')" />
+            <input class="_${hour}" onChange="handleCheck('${day}_${hour}')" type="checkbox" />
           </div>
         `
-    });
+  });
 });
 
-const handleChange = async (e, dayTime) => {
-
-  store = [ ...store, {[dayTime]:e.value}]
-  console.log(store);
-  
-  // store.push({[dayTime]:e.value});
-  // console.log(localStorage);
+const handleChange = (e, dayTime) => {
+  store[dayTime] = e.value;
+  localStorage.dayTime = JSON.stringify(store);
 }
 
-// hours.forEach((hour,i) => {
-//   let rH = i+9;
-//   let cH = d.getHours();
+const handleCheck = dayTime => {
+  let value = store[dayTime]
+  value = `${value}_done`;
+  store[dayTime] = value;
+  localStorage.dayTime = JSON.stringify(store);
 
-//   main.innerHTML += `
-//       <div class="row time-block ${rH<cH ? 'past' : rH>cH ? 'future' : 'present'}">
-//         <div class="col-2 col-md-1 hour text-center py-3">${hour}</div>
-//         <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
-//         <button class="btn saveBtn col-2 col-md-1" aria-label="save">
-//           <i class="fas fa-save" aria-hidden="true"></i>
-//         </button>
-//       </div>
-//   `
-// });
-
-document.onclick = e => {
-  if (e.target.classList.contains("saveBtn")) {
-    store = [];
-    $('textarea').each((i,el) => {
-      store.push(el.value);
-    });
-
-    localStorage.hours = JSON.stringify(store);
-  }
 }

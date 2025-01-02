@@ -1,13 +1,21 @@
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
+  background-image: url(/assets/images/BG.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100vh;
 }
 
 header {
+  background: #eccfb075;
+  width: 80%;
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin: 0 auto;
+  border: 2px solid;
+  border-radius: 5px;
 }
 
 header * {
@@ -28,6 +36,7 @@ header * {
 section {
   text-align: center;
   border: 2px solid #000;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
