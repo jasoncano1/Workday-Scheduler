@@ -47,7 +47,6 @@ section {
 
 section div {
   display: flex;
-  /* border: 1px solid #000; */
 } 
 
 section div h5 {
@@ -69,7 +68,7 @@ section div input {
 }
 
 .present {
-  background: #e0dd92d1;
+    background: #b2e092d1;
 }
 
 .future {
