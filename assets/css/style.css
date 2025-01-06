@@ -8,23 +8,22 @@ body {
 
 header {
   background: #eccfb075;
-  width: 80%;
+  min-width: 1000px;
+  max-width: 80%;
   align-items: center;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   margin: 0 auto;
   border: 2px solid;
   border-radius: 5px;
 }
 
-header * {
-  margin: 5px;
+.title {
+  width: 400px;
+  text-align: center;
 }
 
 #main {
-
-  /* border: 2px solid black; */
   height: 60vh;
   width: 80%;
   margin: 20px auto;

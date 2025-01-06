@@ -1,11 +1,14 @@
+
 let d = new Date();
 let store = [];
 let main = document.getElementById('main');
 
-console.log(d.getDay())
 const handleStorage = async () => {
 
   store = await localStorage.dayTime ? JSON.parse(localStorage.dayTime) : {};
+
+  console.log(store);
+
   let keys = Object.keys(store)
   if (keys) {
     keys.forEach(dayTime => {
@@ -22,6 +25,60 @@ const handleStorage = async () => {
       }
     });
   }
+
+  let totalHours = 0;
+  let totalScheduled = 0;
+  let totalDone = 0;
+
+
+  weekdays.forEach((day, i) => {
+    if (i + 1 < d.getDay()) {
+      totalHours += 9;
+
+      Object.keys(store).forEach(dayTime => {
+        if (dayTime.includes(day)) {
+          totalScheduled += 1
+        };
+
+        if (store[dayTime].includes("done")) {
+           totalDone += 1
+        };
+      });
+    }
+  });
+
+  var data = [
+    {
+      domain: { x: [0, 1], y: [0, 1] },
+      value: totalScheduled / totalHours * 100,
+      title: { text: "Quality" },
+      type: "indicator",
+      mode: "gauge+number",
+      delta: { reference: 400 },
+      gauge: { axis: { range: [null, 100] } }
+    }
+  ];
+
+  var layout = { width: 300, height: 300, paper_bgcolor: 'transparent' };
+  Plotly.newPlot('chart1', data, layout);
+
+  console.log(totalDone, totalScheduled);
+  
+
+  var data2 = [
+    {
+      domain: { x: [0, 1], y: [0, 1] },
+      value: totalDone / totalScheduled * 100,
+      title: { text: "Efficiency" },
+      type: "indicator",
+      mode: "gauge+number",
+      delta: { reference: 400 },
+      gauge: { axis: { range: [null, 100] } }
+    }
+  ];
+
+  var layout2 = { width: 300, height: 300, paper_bgcolor: 'transparent' };
+  Plotly.newPlot('chart2', data2, layout2);
 };
 
 handleStorage();
@@ -76,5 +133,5 @@ const handleCheck = dayTime => {
   value = `${value}_done`;
   store[dayTime] = value;
   localStorage.dayTime = JSON.stringify(store);
+};
 
-}

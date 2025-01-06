@@ -2,34 +2,28 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-      crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/css/style.css" />
     <title>Work Day Scheduler</title>
   </head>
-
+  
   <body>
-    <header class="text-center p-5 mb-4">
-      <h1 class="display-3">Weekly Work Schedule</h1>
-      <p class="lead">A simple calendar app for scheduling your work week</p>
-      <p id="currentDay" class="lead"></p>
+    <header>
+      <div id = "chart1"></div>
+      <div class="title">
+        <h1>Weekly Work Schedule</h1>
+        <p>A simple calendar app for scheduling your work week</p>
+        <h3 id="currentDay"></h3>
+      </div>
+      <div id = "chart2"></div>
     </header>
     <main id="main" class="container-fluid"></main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
-    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
-    crossorigin="anonymous"></script>
-
     <script src="assets/js/script.js"></script>
   </body>
-</html>
+  </html>
