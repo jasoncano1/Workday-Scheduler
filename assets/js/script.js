@@ -7,9 +7,8 @@ const handleStorage = async () => {
 
   store = await localStorage.dayTime ? JSON.parse(localStorage.dayTime) : {};
 
-  console.log(store);
-
   let keys = Object.keys(store)
+
   if (keys) {
     keys.forEach(dayTime => {
       let [d, h] = dayTime.split("_");
@@ -26,22 +25,21 @@ const handleStorage = async () => {
     });
   }
 
+  let totalDone = 0;
   let totalHours = 0;
   let totalScheduled = 0;
-  let totalDone = 0;
-
 
   weekdays.forEach((day, i) => {
     if (i + 1 < d.getDay()) {
       totalHours += 9;
 
-      Object.keys(store).forEach(dayTime => {
+      keys.forEach(dayTime => {
         if (dayTime.includes(day)) {
-          totalScheduled += 1
-        };
+          totalScheduled += 1;
 
-        if (store[dayTime].includes("done")) {
-           totalDone += 1
+          if (store[dayTime].includes("done")) {
+             totalDone += 1
+          };
         };
       });
     }
@@ -129,8 +127,21 @@ const handleChange = (e, dayTime) => {
 }
 
 const handleCheck = dayTime => {
-  let value = store[dayTime]
-  value = `${value}_done`;
+  let value = store[dayTime];
+  let [d, h] = dayTime.split("_");
+  let day = document.getElementById(d);
+  let hour = day.querySelector(`._${h}`);
+  let checkbox = day.querySelector(`._${h}[type=checkbox]`);
+
+  value.includes("done") 
+    ? (
+      value = value.replace("_done", ""),
+      hour.style.textDecoration = "none"
+    ) : (
+      value = `${value}_done`,
+      hour.style.textDecoration = "line-through"
+    );
+
   store[dayTime] = value;
   localStorage.dayTime = JSON.stringify(store);
 };
