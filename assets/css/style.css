@@ -73,3 +73,25 @@ section div input {
 .future {
   background: lightblue;
 }
+
+@media screen and (max-width: 430px) {
+header {
+  width: 100%;
+  min-width: none;
+  flex-direction: column;
+}
+
+ header:nth-child(1) {
+  order: 2;
+  display: flex;
+}
+header:nth-child(2) {
+   display: flex;
+   order: 1;
+  }
+  header:nth-child(3) {
+   display: flex;
+  order: 3;
+ }
+  
+}
