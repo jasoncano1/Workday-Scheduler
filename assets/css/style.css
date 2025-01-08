@@ -74,24 +74,33 @@ section div input {
   background: lightblue;
 }
 
-@media screen and (max-width: 430px) {
-header {
-  width: 100%;
-  min-width: none;
-  flex-direction: column;
-}
-
- header:nth-child(1) {
-  order: 2;
-  display: flex;
-}
-header:nth-child(2) {
-   display: flex;
-   order: 1;
+@media screen and (max-width: 431px) {
+  header {
+    width: 430px;
+    min-width: 0;
+    border: 1px solid #900909;
+    overflow: hidden;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
   }
-  header:nth-child(3) {
-   display: flex;
+
+  header div:nth-child(1) {
+    order: 2;
+    width: 100px;
+    height: 200px;
+    border: 1px solid #000;
+  }
+
+  header div:nth-child(2) {
+    order: 1;
+    width: 100%;
+  }
+
+  header div:nth-child(3) {
   order: 3;
+  width: 100px;
+  border: 1px solid #000;
  }
   
 }
