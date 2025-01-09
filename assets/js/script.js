@@ -57,7 +57,7 @@ const handleStorage = async () => {
     }
   ];
 
-  var layout = { width: 300, height: 300, paper_bgcolor: 'transparent' };
+  var layout = { width: 250, height: 250, paper_bgcolor: 'transparent' };
   Plotly.newPlot('chart1', data, layout);
 
   console.log(totalDone, totalScheduled);
@@ -75,7 +75,7 @@ const handleStorage = async () => {
     }
   ];
 
-  var layout2 = { width: 300, height: 300, paper_bgcolor: 'transparent' };
+  var layout2 = { width: 250, height: 250, paper_bgcolor: 'transparent' };
   Plotly.newPlot('chart2', data2, layout2);
 };
 

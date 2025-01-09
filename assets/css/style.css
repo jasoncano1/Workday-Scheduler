@@ -23,7 +23,7 @@ header {
   text-align: center;
 }
 
-#main {
+main {
   height: 60vh;
   width: 80%;
   margin: 20px auto;
@@ -41,12 +41,13 @@ section {
   justify-content: space-around;
   padding: 5px;
   width: 18%;
+  width: 95%;
   background: lightblue;
 }
 
 section div {
   display: flex;
-} 
+}
 
 section div h5 {
   margin: 0;
@@ -67,7 +68,7 @@ section div input {
 }
 
 .present {
-    background: #b2e092d1;
+  background: #b2e092d1;
 }
 
 .future {
@@ -75,32 +76,79 @@ section div input {
 }
 
 @media screen and (max-width: 431px) {
+  body {
+    margin: 0;
+  }
+  
+  main {
+    margin: 20px auto;
+    display: -webkit-box;
+    overflow-x: scroll;
+    position: relative;
+    width: 75%
+  }
+
+  #leftClick {
+    position: absolute;
+    top: 70%;
+    background: transparent;
+    border: 2px solid;
+    color: white;
+    text-shadow: 3px 3px 1px black;
+    border-radius: 10px;
+    left: 5px;
+    font-size: 3rem;
+    transform: translateY(-50%);
+  }
+
+  #rightClick {
+    position: absolute;
+    top: 70%;
+    background: transparent;
+    border: 2px solid;
+    color: white;
+    text-shadow: 3px 3px 1px black;
+    border-radius: 10px;
+    right: 5px;
+    font-size: 3rem;
+    transform: translateY(-50%);
+  }
+
   header {
     width: 430px;
-    min-width: 0;
-    border: 1px solid #900909;
+    display: -webkit-box;
+    max-width: 100%;
     overflow: hidden;
+    margin: 0;
+    border: none;
+    border-bottom: 2px solid #000;
+    min-width: 0;
     flex-wrap: wrap;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
   }
 
   header div:nth-child(1) {
     order: 2;
-    width: 100px;
-    height: 200px;
-    border: 1px solid #000;
+    width: 45%;
+    height: 175px;
+    position: relative;
+    right: 20px;
+    bottom: 20px;
   }
 
   header div:nth-child(2) {
     order: 1;
     width: 100%;
+
   }
 
   header div:nth-child(3) {
-  order: 3;
-  width: 100px;
-  border: 1px solid #000;
- }
-  
+    order: 3;
+    width: 45%;
+    position: relative;
+    right: 20px;
+    bottom: 20px;
+  }
+
 }
