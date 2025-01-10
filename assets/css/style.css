@@ -79,7 +79,7 @@ section div input {
   body {
     margin: 0;
   }
-  
+
   main {
     margin: 20px auto;
     display: -webkit-box;
@@ -149,6 +149,14 @@ section div input {
     position: relative;
     right: 20px;
     bottom: 20px;
+  }
+
+  .modebar-group {
+    background-color: transparent;
+  }
+
+  #chart1 {
+    border: 1px solid red;
   }
 
 }
