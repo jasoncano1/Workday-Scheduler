@@ -23,6 +23,11 @@ header {
   text-align: center;
 }
 
+#chart1b,
+#chart2b {
+  display: none;
+}
+
 main {
   height: 60vh;
   width: 80%;
@@ -80,36 +85,59 @@ section div input {
     margin: 0;
   }
 
+  .title {
+    font-size: 0.8rem;
+  }
+
+  .hide1 {
+    display: none;
+  }
+
+  #chart1,
+  #chart2 {
+    display: none;
+  }
+
+  #chart1b,
+  #chart2b {
+    display: block;
+  }
+
+  .container {
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: space-between;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+  }
+
   main {
-    margin: 20px auto;
     display: -webkit-box;
     overflow-x: scroll;
     position: relative;
-    width: 75%
+    width: 250px;
+    height: 500px;
   }
 
   #leftClick {
-    position: absolute;
-    top: 70%;
     background: transparent;
     border: 2px solid;
     color: white;
     text-shadow: 3px 3px 1px black;
     border-radius: 10px;
-    left: 5px;
     font-size: 3rem;
     transform: translateY(-50%);
   }
 
   #rightClick {
-    position: absolute;
-    top: 70%;
     background: transparent;
     border: 2px solid;
     color: white;
     text-shadow: 3px 3px 1px black;
     border-radius: 10px;
-    right: 5px;
     font-size: 3rem;
     transform: translateY(-50%);
   }
@@ -126,29 +154,6 @@ section div input {
     flex-wrap: wrap;
     display: flex;
     justify-content: space-between;
-  }
-
-  header div:nth-child(1) {
-    order: 2;
-    width: 45%;
-    height: 175px;
-    position: relative;
-    right: 20px;
-    bottom: 20px;
-  }
-
-  header div:nth-child(2) {
-    order: 1;
-    width: 100%;
-
-  }
-
-  header div:nth-child(3) {
-    order: 3;
-    width: 45%;
-    position: relative;
-    right: 20px;
-    bottom: 20px;
   }
 
   .modebar-group {

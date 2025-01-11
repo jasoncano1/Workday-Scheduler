@@ -57,11 +57,8 @@ const handleStorage = async () => {
     }
   ];
 
-  var layout = { width: 250, height: 250, paper_bgcolor: 'transparent' };
+  var layout = { width: 300, height: 250, paper_bgcolor: 'transparent' };
   Plotly.newPlot('chart1', data, layout);
-
-  console.log(totalDone, totalScheduled);
-  
 
   var data2 = [
     {
@@ -75,8 +72,40 @@ const handleStorage = async () => {
     }
   ];
 
-  var layout2 = { width: 250, height: 250, paper_bgcolor: 'transparent' };
+  var layout2 = { width: 300, height: 250, paper_bgcolor: 'transparent' };
   Plotly.newPlot('chart2', data2, layout2);
+
+  var data = [
+    {
+      type: "indicator",
+      mode: "number+gauge+delta",
+      gauge: { shape: "bullet" },
+      delta: { reference: 100 },
+      value: 50,
+      domain: { x: [0, 1], y: [0, 1] },
+      title: { text: "Quality" }
+    }
+  ];
+  
+  var layout = { width: 350, height: 80, paper_bgcolor: 'transparent', margin: { t: 10, b: 40, l: 120, r: 60 }};
+  Plotly.newPlot('chart1b', data, layout);
+  
+
+
+  var data = [
+    {
+      type: "indicator",
+      mode: "number+gauge+delta",
+      gauge: { shape: "bullet" },
+      delta: { reference: 100 },
+      value: 50,
+      domain: { x: [0, 1], y: [0, 1] },
+      title: { text: "Efficiancy" }
+    }
+  ];
+  
+  var layout = { width: 350, height: 80, paper_bgcolor: 'transparent', margin: { t: 10, b: 40, l: 120, r: 60 }};
+  Plotly.newPlot('chart2b', data, layout);
 };
 
 handleStorage();
