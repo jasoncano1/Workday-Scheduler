@@ -111,6 +111,7 @@ const handleStorage = async () => {
 handleStorage();
 
 currentDay.innerText = `${d.toDateString()}, ${d.toLocaleTimeString()}`;
+currentDay2.innerText = `${d.toDateString()}, ${d.toLocaleTimeString()}`;
 
 const hours = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
 const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];

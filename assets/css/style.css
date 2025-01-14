@@ -28,6 +28,11 @@ header {
   display: none;
 }
 
+#currentDay2 {
+  margin: 10px auto;
+  display: none;
+}
+
 main {
   height: 60vh;
   width: 80%;
@@ -103,6 +108,10 @@ section div input {
     display: block;
   }
 
+  #currentDay2 {
+    display: block;
+  }
+  
   .container {
     width: 90%;
     display: flex;
