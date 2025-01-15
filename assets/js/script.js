@@ -1,5 +1,11 @@
 
 let d = new Date();
+let monday = new Date(d.getDay != 1 ? d - (d.getDay() - 1) * 86400000 : d).toDateString().split(' ').join('');
+let tuesday =new Date(d.getDay != 1 ? d - (d.getDay() - 2) * 86400000 : d).toDateString().split(' ').join('');
+let wednesday = new Date(d.getDay != 1 ? d - (d.getDay() - 3) * 86400000 : d).toDateString().split(' ').join('');
+let thursday = new Date(d.getDay != 1 ? d - (d.getDay() - 4) * 86400000 : d).toDateString().split(' ').join('');
+let friday = new Date(d.getDay != 1 ? d - (d.getDay() - 5) * 86400000 : d).toDateString().split(' ').join('');
+
 let store = [];
 let main = document.getElementById('main');
 
@@ -13,6 +19,7 @@ const handleStorage = async () => {
     keys.forEach(dayTime => {
       let [d, h] = dayTime.split("_");
       let day = document.getElementById(d);
+
       let hour = day.querySelector(`._${h}`);
       let checkbox = day.querySelector(`._${h}[type=checkbox]`);
       let value = store[dayTime].split("_");
@@ -113,16 +120,22 @@ handleStorage();
 currentDay.innerText = `${d.toDateString()}, ${d.toLocaleTimeString()}`;
 currentDay2.innerText = `${d.toDateString()}, ${d.toLocaleTimeString()}`;
 
+const weekdays = [monday, tuesday, wednesday, thursday, friday];
 const hours = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
-const weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
-weekdays.forEach((day, i) => {
+weekdays.forEach((date, i) => {
+
   main.innerHTML += `
-    <section id=${day} class=${i + 1 < d.getDay() ? "past" : i + 1 == d.getDay() ? "present" : "future"} >
-      <h5>${day}</h5>
+    <section id=${date} class=${i + 1 < d.getDay() ? "past" : i + 1 == d.getDay() ? "present" : "future"} >
+      <h5>${
+        i==0 ? 'Monday' : 
+        i==1 ? 'Tuesday' :
+        i==2 ? 'Wednesday' :
+        i==3 ? 'Thursday' : 'Friday'
+      }</h5>
     </section>`;
 
-  let div = document.getElementById(day);
+  let div = document.getElementById(date);
   hours.forEach(hour => {
     div.innerHTML +=
       div.classList.contains("past") ?
@@ -137,15 +150,15 @@ weekdays.forEach((day, i) => {
           `
           <div>
             <h5>${hour}</h5>
-            <input class="_${hour}" onChange="handleChange(this, '${day}_${hour}')" />
+            <input class="_${hour}" onChange="handleChange(this, '${date}_${hour}')" />
             <input class="_${hour}" disabled type="checkbox" />
           </div>
         `:
           `
           <div>
             <h5>${hour}</h5>
-            <input class="_${hour}" onChange="handleChange(this, '${day}_${hour}')" />
-            <input class="_${hour}" onChange="handleCheck('${day}_${hour}')" type="checkbox" />
+            <input class="_${hour}" onChange="handleChange(this, '${date}_${hour}')" />
+            <input class="_${hour}" onChange="handleCheck('${date}_${hour}')" type="checkbox" />
           </div>
         `
   });
