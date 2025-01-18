@@ -85,6 +85,14 @@ section div input {
   background: lightblue;
 }
 
+#leftClick {
+  display: none;
+}
+
+#rightClick {
+  display: none;
+}
+
 @media screen and (max-width: 431px) {
   body {
     margin: 0;
@@ -132,6 +140,7 @@ section div input {
   }
 
   #leftClick {
+    display: block;
     background: transparent;
     border: 2px solid;
     color: white;
@@ -142,6 +151,7 @@ section div input {
   }
 
   #rightClick {
+    display: block;
     background: transparent;
     border: 2px solid;
     color: white;
