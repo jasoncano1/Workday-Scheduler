@@ -40,19 +40,27 @@ main {
   display: flex;
   justify-content: space-between;
   padding: 0;
+  overflow: hidden;
+  transition: all 0.5s;
 }
+
+.slideLeftOut {
+  transform: translateX(-100%);
+}
+
 
 section {
   text-align: center;
-  border: 2px solid #000;
+  border: 1px solid #000;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 5px;
-  width: 18%;
-  width: 95%;
-  background: lightblue;
+  padding: 0%;
+  width: 19%;
+  /* width: 95%; */
+  min-width: 19%;
+  background: lightblue;;
 }
 
 section div {
@@ -85,6 +93,10 @@ section div input {
   background: lightblue;
 }
 
+.container {
+  display: flex;
+  align-items: center;
+}
 #leftClick {
   display: none;
 }

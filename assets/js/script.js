@@ -6,15 +6,43 @@ let nextMonday = Date.now();
 const h24 = 60 * 60 * 24 * 1000;
 const main = document.getElementById('main');
 
+const handleChange = (e, dayTime) => {
+  store[dayTime] = e.value;
+  localStorage.dayTime = JSON.stringify(store);
+}
+
+const handleCheck = dayTime => {
+  let value = store[dayTime];
+  let [d, h] = dayTime.split("_");
+  let day = document.getElementById(d);
+  let hour = day.querySelector(`._${h}`);
+  let checkbox = day.querySelector(`._${h}[type=checkbox]`);
+
+  value.includes("done")
+    ? (
+      value = value.replace("_done", ""),
+      hour.style.textDecoration = "none"
+    ) : (
+      value = `${value}_done`,
+      hour.style.textDecoration = "line-through"
+    );
+
+  store[dayTime] = value;
+  localStorage.dayTime = JSON.stringify(store);
+};
+
 const findNextMon = () => {
   if (new Date(nextMonday).getDay() == 1) nextMonday = nextMonday + h24;
 
   while (new Date(nextMonday).getDay() != 1) {
     nextMonday = nextMonday + h24
   };
-
+  main.classList.toggle("slideLeftOut", true);
   main.innerHTML = "";
   init(new Date(nextMonday));
+  setTimeout(() => {
+    main.classList.toggle("slideLeftOut", false);
+  }, 500);
 };
 
 const findPrevMon = () => {
@@ -47,6 +75,8 @@ const init = (d) => {
         let [d, h] = dayTime.split("_");
         let day = document.getElementById(d);
 
+        if (day?.querySelector(`._${h}`)) {
+
         let hour = day.querySelector(`._${h}`);
         let checkbox = day.querySelector(`._${h}[type=checkbox]`);
         let value = store[dayTime].split("_");
@@ -56,6 +86,7 @@ const init = (d) => {
           checkbox.checked = true;
           hour.style.textDecoration = "line-through";
         }
+      }
       });
     }
 
@@ -150,6 +181,8 @@ const init = (d) => {
   const weekdays = [monday, tuesday, wednesday, thursday, friday];
   const hours = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
 
+  main.innerHTML = "";
+
   weekdays.forEach((date, i) => {
 
     main.innerHTML += `
@@ -189,31 +222,12 @@ const init = (d) => {
         `
     });
   });
-
-  const handleChange = (e, dayTime) => {
-    store[dayTime] = e.value;
-    localStorage.dayTime = JSON.stringify(store);
-  }
-
-  const handleCheck = dayTime => {
-    let value = store[dayTime];
-    let [d, h] = dayTime.split("_");
-    let day = document.getElementById(d);
-    let hour = day.querySelector(`._${h}`);
-    let checkbox = day.querySelector(`._${h}[type=checkbox]`);
-
-    value.includes("done")
-      ? (
-        value = value.replace("_done", ""),
-        hour.style.textDecoration = "none"
-      ) : (
-        value = `${value}_done`,
-        hour.style.textDecoration = "line-through"
-      );
-
-    store[dayTime] = value;
-    localStorage.dayTime = JSON.stringify(store);
-  };
 };
+
+const nextWk = document.getElementById('nextWeek');
+const prevWk = document.getElementById('prevWeek');
+
+nextWk.addEventListener('click', findNextMon);
+prevWk.addEventListener('click', findPrevMon);
 
 init(d);
