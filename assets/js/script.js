@@ -38,11 +38,13 @@ const findNextMon = () => {
     nextMonday = nextMonday + h24
   };
   main.classList.toggle("slideLeftOut", true);
-  main.innerHTML = "";
-  init(new Date(nextMonday));
+  setTimeout(() => {
+    main.innerHTML = "";
+    init(new Date(nextMonday));
+  }, 500);
   setTimeout(() => {
     main.classList.toggle("slideLeftOut", false);
-  }, 500);
+  }, 1000);
 };
 
 const findPrevMon = () => {
@@ -52,12 +54,19 @@ const findPrevMon = () => {
     nextMonday = nextMonday - h24
   };
 
-  main.innerHTML = "";
-  init(new Date(nextMonday));
+  main.classList.toggle("slideRightOut", true);
+  setTimeout(() => {
+    main.innerHTML = "";
+    init(new Date(nextMonday));
+  }, 500);
+  setTimeout(() => {
+    main.classList.toggle("slideRightOut", false);
+  }, 1000);
 }
 
 
 const init = (d) => {
+  
   let monday = new Date(d.getDay != 1 ? d - (d.getDay() - 1) * 86400000 : d).toDateString().split(' ').join('');
   let tuesday = new Date(d.getDay != 1 ? d - (d.getDay() - 2) * 86400000 : d).toDateString().split(' ').join('');
   let wednesday = new Date(d.getDay != 1 ? d - (d.getDay() - 3) * 86400000 : d).toDateString().split(' ').join('');
@@ -186,7 +195,13 @@ const init = (d) => {
   weekdays.forEach((date, i) => {
 
     main.innerHTML += `
-    <section id=${date} class=${i + 1 < d.getDay() ? "past" : i + 1 == d.getDay() ? "present" : "future"} >
+    <section id=${date} class=${
+      new Date() - d > 86400000 ? "past" : 
+      new Date() - d < -86400000 ? "future" : 
+      i + 1 < d.getDay() ? "past" : 
+      i + 1 == d.getDay() ? "present" : "future"
+    }>
+      
       <h5>${i == 0 ? 'Monday' :
         i == 1 ? 'Tuesday' :
           i == 2 ? 'Wednesday' :

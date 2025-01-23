@@ -41,13 +41,71 @@ main {
   justify-content: space-between;
   padding: 0;
   overflow: hidden;
-  transition: all 0.5s;
 }
 
 .slideLeftOut {
-  transform: translateX(-100%);
+  animation:nextWk 1s ease-in-out;
 }
 
+@keyframes nextWk {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  30% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  40% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+}
+
+.slideRightOut {
+  animation:preWk 1s ease-in-out;
+}
+
+@keyframes preWk {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  25% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  30% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  40% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+}
 
 section {
   text-align: center;
