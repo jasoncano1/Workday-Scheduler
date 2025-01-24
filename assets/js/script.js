@@ -37,6 +37,7 @@ const findNextMon = () => {
   while (new Date(nextMonday).getDay() != 1) {
     nextMonday = nextMonday + h24
   };
+
   main.classList.toggle("slideLeftOut", true);
   setTimeout(() => {
     main.innerHTML = "";
@@ -62,7 +63,7 @@ const findPrevMon = () => {
   setTimeout(() => {
     main.classList.toggle("slideRightOut", false);
   }, 1000);
-}
+};
 
 
 const init = (d) => {
@@ -245,4 +246,21 @@ const prevWk = document.getElementById('prevWeek');
 nextWk.addEventListener('click', findNextMon);
 prevWk.addEventListener('click', findPrevMon);
 
+let loc=0;
+
+rightClick.addEventListener('click', () => {
+  loc-=250;
+  main.scrollTo({
+    left: loc, // Replace with the desired horizontal scroll position
+    behavior: 'smooth'
+  });
+});
+
+leftClick.addEventListener('click', () => {
+  loc+=250;
+  main.scrollTo({
+    left: loc, // Replace with the desired horizontal scroll position
+    behavior: 'smooth'
+  });
+});
 init(d);

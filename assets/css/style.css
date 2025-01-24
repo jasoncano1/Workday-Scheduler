@@ -116,7 +116,6 @@ section {
   justify-content: space-around;
   padding: 0%;
   width: 19%;
-  /* width: 95%; */
   min-width: 19%;
   background: lightblue;;
 }
@@ -189,6 +188,10 @@ section div input {
   #currentDay2 {
     display: block;
   }
+
+  #nextWeek, #prevWeek {
+    display: none;
+  }   
   
   .container {
     width: 90%;
@@ -207,6 +210,10 @@ section div input {
     position: relative;
     width: 250px;
     height: 500px;
+  }
+
+  section {
+    width: 99%;
   }
 
   #leftClick {
