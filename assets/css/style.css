@@ -151,9 +151,52 @@ section div input {
 }
 
 .container {
-  display: flex;
-  align-items: center;
+  text-align: center;
 }
+
+#daysDiv {
+  margin-top: 20px;
+}
+
+#nextWeek {
+  background: #add8e6;  
+  font-weight: 600;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#prevWeek {
+  background: #e67171d1;
+  font-weight: 600;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+#today {
+  background: #b2e092d1;
+  font-weight: 600;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
 #leftClick {
   display: none;
 }
@@ -187,11 +230,7 @@ section div input {
 
   #currentDay2 {
     display: block;
-  }
-
-  #nextWeek, #prevWeek {
-    display: none;
-  }   
+  }  
   
   .container {
     width: 90%;

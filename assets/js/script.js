@@ -263,4 +263,9 @@ leftClick.addEventListener('click', () => {
     behavior: 'smooth'
   });
 });
+
+today.onclick = () =>{
+  init(new Date());
+}
+
 init(d);
