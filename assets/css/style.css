@@ -1,4 +1,12 @@
 body {
+  min-width: 100%;
+  min-height: 100vh;
+}
+
+#bodyDiv {
+  overflow: scroll;
+  min-width: 105%;
+  min-height: 105vh;
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   background-image: url(../images/BG.png);
