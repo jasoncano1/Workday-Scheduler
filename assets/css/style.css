@@ -10,7 +10,6 @@ body {
   min-height: 100vh;
   position: relative;
   font-family: 'Open Sans', sans-serif;
-  font-size: 16px;
   background-image: url(../images/BG.png);
   background-repeat: no-repeat;
   background-size: cover;
@@ -254,7 +253,6 @@ section div input {
   .container {
     width: 90%;
     display: flex;
-    flex-wrap: wrap;
     margin: 0 auto;
     justify-content: space-between;
     flex-direction: row;
