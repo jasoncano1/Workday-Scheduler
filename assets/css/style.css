@@ -1,21 +1,32 @@
 body {
-  min-width: 100%;
-  min-height: 100vh;
-  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 #bodyDiv {
-  overflow: scroll;
-  min-width: 105%;
-  min-height: 105vh;
-  position: fixed;
-  top: -1%;
-  left: -1vh;
+  overflow: hidden;
+  min-width: 100%;
+  min-height: 100vh;
+  position: relative;
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   background-image: url(../images/BG.png);
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.containerDiv {
+  min-width: 100%;
+  min-height: 100vh;
+  overflow: auto;
+  position: relative;
+}
+
+.container {
+  text-align: center;
+  min-width: 100%;
+  min-height: 100vh;
 }
 
 header {
@@ -160,10 +171,6 @@ section div input {
 
 .future {
   background: lightblue;
-}
-
-.container {
-  text-align: center;
 }
 
 #daysDiv {
