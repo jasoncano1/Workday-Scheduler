@@ -248,21 +248,6 @@ prevWk.addEventListener('click', findPrevMon);
 
 let loc=0;
 
-rightClick.addEventListener('click', () => {
-  loc-=250;
-  main.scrollTo({
-    left: loc, // Replace with the desired horizontal scroll position
-    behavior: 'smooth'
-  });
-});
-
-leftClick.addEventListener('click', () => {
-  loc+=250;
-  main.scrollTo({
-    left: loc, // Replace with the desired horizontal scroll position
-    behavior: 'smooth'
-  });
-});
 
 today.onclick = () =>{
   init(new Date());
