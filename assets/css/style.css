@@ -215,14 +215,6 @@ section div input {
   border-radius: 5px;
 }
 
-#leftClick {
-  display: none;
-}
-
-#rightClick {
-  display: none;
-}
-
 @media screen and (max-width: 431px) {
   body {
     margin: 0;
@@ -260,6 +252,12 @@ section div input {
     align-items: center;
   }
 
+  .mainDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
   main {
     display: -webkit-box;
     overflow-x: scroll;
@@ -270,28 +268,6 @@ section div input {
 
   section {
     width: 99%;
-  }
-
-  #leftClick {
-    display: block;
-    background: transparent;
-    border: 2px solid;
-    color: white;
-    text-shadow: 3px 3px 1px black;
-    border-radius: 10px;
-    font-size: 3rem;
-    transform: translateY(-50%);
-  }
-
-  #rightClick {
-    display: block;
-    background: transparent;
-    border: 2px solid;
-    color: white;
-    text-shadow: 3px 3px 1px black;
-    border-radius: 10px;
-    font-size: 3rem;
-    transform: translateY(-50%);
   }
 
   header {
