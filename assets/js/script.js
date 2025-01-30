@@ -246,11 +246,16 @@ const prevWk = document.getElementById('prevWeek');
 nextWk.addEventListener('click', findNextMon);
 prevWk.addEventListener('click', findPrevMon);
 
-let loc=0;
-
+const showToday = () =>
+main.scrollTo({
+  left: document.querySelector('.present').getBoundingClientRect().x - main.getBoundingClientRect().x,
+  behavior: 'smooth'
+});
 
 today.onclick = () =>{
   init(new Date());
+  showToday();
 }
 
 init(d);
+showToday();

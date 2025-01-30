@@ -55,6 +55,12 @@ header {
   display: none;
 }
 
+#mainDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 main {
   height: 60vh;
   width: 80%;
@@ -251,12 +257,6 @@ section div input {
     align-content: center;
     align-items: center;
   }
-
-  #mainDiv {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
   main {
     display: -webkit-box;
