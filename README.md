@@ -7,7 +7,7 @@
 ## Description
 A 5 day work week scheduler that measures quality ands efficiency. 
 
-![app_image](mockup.png)
+![app_image](assets/images/mockup.png)
 
 ## Table of Contents
 - [Installation](#installation)
