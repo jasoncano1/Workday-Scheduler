@@ -1,9 +1,9 @@
 
 let store = [];
+const h24 = 60 * 60 * 24 * 1000;
 let now = Date.now();
 let d = new Date(now);
 let nextMonday = Date.now();
-const h24 = 60 * 60 * 24 * 1000;
 const main = document.getElementById('main');
 
 const handleChange = (e, dayTime) => {
@@ -181,6 +181,8 @@ const init = (d) => {
 
     var layout = { width: 350, height: 80, paper_bgcolor: 'transparent', margin: { t: 10, b: 40, l: 120, r: 60 } };
     Plotly.newPlot('chart2b', data, layout);
+
+    console.log(totalScheduled, totalHours, totalDone);
   };
 
   handleStorage();

@@ -5,7 +5,7 @@
 [website](https://jasoncano1.github.io/Workday-Scheduler/)
 
 ## Description
-A 5 day work week scheduler that measures quality ands efficiency. 
+A five-day workweek scheduler that tracks quality and efficiency. 
 
 ![app_image](assets/images/mockup.png)
 
