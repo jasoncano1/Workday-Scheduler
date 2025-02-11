@@ -1,15 +1,24 @@
 
-let store = [];
 const h24 = 60 * 60 * 24 * 1000;
 let now = Date.now();
 let d = new Date(now);
 let nextMonday = Date.now();
 const main = document.getElementById('main');
 
+let store; 
+
+
 const handleChange = (e, dayTime) => {
   store[dayTime] = e.value;
-  localStorage.dayTime = JSON.stringify(store);
-}
+
+  fetch('/api/data', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(store)
+  });
+};
 
 const handleCheck = dayTime => {
   let value = store[dayTime];
@@ -28,7 +37,14 @@ const handleCheck = dayTime => {
     );
 
   store[dayTime] = value;
-  localStorage.dayTime = JSON.stringify(store);
+  
+  fetch('/api/data', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(store)
+  });
 };
 
 const findNextMon = () => {
@@ -76,7 +92,10 @@ const init = (d) => {
 
   const handleStorage = async () => {
 
-    store = await localStorage.dayTime ? JSON.parse(localStorage.dayTime) : {};
+    await fetch('/api/data').then(res => res.json()).then(data => {
+      console.log(data);
+      store = data;
+    });
 
     let keys = Object.keys(store)
 
@@ -128,8 +147,16 @@ const init = (d) => {
         type: "indicator",
         mode: "gauge+number",
         delta: { reference: 400 },
-        gauge: { axis: { range: [null, 100] } }
-      }
+        gauge: { 
+          axis: { range: [0, 100] },
+          bar: { color: "red"}, 
+          steps: [
+            { range: [0, 50], color: "black" },
+            { range: [51, 74], color: "yellow" },
+            { range: [75, 100], color: "green" }
+          ]
+        }     
+       }
     ];
 
     var layout = { width: 300, height: 250, paper_bgcolor: 'transparent' };
@@ -143,7 +170,15 @@ const init = (d) => {
         type: "indicator",
         mode: "gauge+number",
         delta: { reference: 400 },
-        gauge: { axis: { range: [null, 100] } }
+        gauge: { 
+          axis: { range: [0, 100] },
+          bar: { color: "red"}, 
+          steps: [
+            { range: [0, 50], color: "black" },
+            { range: [51, 74], color: "yellow" },
+            { range: [75, 100], color: "green" }
+          ]
+        }
       }
     ];
 

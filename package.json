@@ -1,0 +1,26 @@
+{
+  "name": "workday-scheduler",
+  "version": "1.0.0",
+  "description": "Workday Scheduler",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasoncano1/Workday-Scheduler.git"
+  },
+  "author": "Jason C",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jasoncano1/Workday-Scheduler/issues"
+  },
+  "homepage": "https://github.com/jasoncano1/Workday-Scheduler#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
