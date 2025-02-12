@@ -2,7 +2,7 @@
 ![MIT](https://img.shields.io/badge/License-MIT-blue)
 
 ## Website: 
-[website](https://jasoncano1.github.io/Workday-Scheduler/)
+[website](https://workweekscheduler-f0d43aaa27a0.herokuapp.com/)
 
 ## Description
 A five-day workweek scheduler that tracks quality and efficiency. 
