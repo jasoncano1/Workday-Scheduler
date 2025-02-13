@@ -2,9 +2,7 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt'); // bcrypt for hashing passwords
 const path = require('path');
 const db = require('../models'); // Assuming you have a models/index.js that exports your Sequelize models
-const session = require('express-session'); // For session management
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const sequelize = require('../config/connection'); // Your Sequelize connection
+const {writeFile} = require('fs');
 
 // In-memory user store
 // NOTE: In a production app, use a database instead of an in-memory array.
@@ -54,6 +52,22 @@ router.post('/login', async (req, res) => {
     res.status(500).send('Error logging in.');
   }
 });
+
+let data = require('./public/db/data.json');
+
+app.get('/api/data', (req, res) => {
+    res.json(data);
+});
+
+app.post('/api/data', (req, res) => {
+    data = req.body;
+    writeFile('./public/db/data.json', JSON.stringify(data, null, 2), err => {
+        if (err) throw err;
+    });
+    console.log(data);
+    res.json(data);
+});
+
 // GET route for the login page
 module.exports = router;
 
