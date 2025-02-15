@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    background: #f0f0f0;
+}
+
+#title {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 20px;
+}
+
+main {
+    border: 2px solid black;
+    margin: 10% 20%;
+    padding: 20px;
+    border-radius: 5px;
+    background: white;
+
+}

@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="./css/login.css" />  
     <meta charset="UTF-8" />
     <title>Login Page</title>
     <!-- Add your CSS styling here -->
   </head>
   <body>
+    <h1 id="title">Workday Scheduler</h1>
+    <main id="main">
+
     <h1>Login</h1>
     <!-- Form sends a POST request to /login -->
     <form action="/login" method="POST">
@@ -18,7 +22,12 @@
       <button type="submit">Login</button>
     </form>
     <p>
-      Don't have an account? <a href="/signup">Sign up here</a>
+      If you don't have an account and would like to save in the cloud <a href="/signup">Sign up here</a>.
+    </p>
+    <p>
+      If you don't have an account and would like to save on your devce <a href="/workday">Continue</a>.
     </p>
   </body>
+</main>
+
 </html>
