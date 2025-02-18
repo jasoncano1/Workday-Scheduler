@@ -1,8 +1,11 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt'); // bcrypt for hashing passwords
 const path = require('path');
-const db = require('../models'); // Assuming you have a models/index.js that exports your Sequelize models
+const db = require('../db/data.json'); // Import the data from the JSON file
 const {writeFile} = require('fs');
+
+console.log(db);
+
 
 // In-memory user store
 // NOTE: In a production app, use a database instead of an in-memory array.

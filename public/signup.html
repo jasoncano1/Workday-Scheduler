@@ -12,7 +12,7 @@
 
     <h1>Signup</h1>
     <!-- Form sends a POST request to /login -->
-    <form action="/signup" method="POST">
+    <form>
       <label for="username">Username:</label>
       <input type="text" name="username" id="username" required />
       <br /><br />
@@ -20,17 +20,19 @@
       <input type="password" name="password" id="password" required />
       <br /><br />
       <label for="password">Confirm:</label>
-      <input type="password" name="password" id="confirmPW" required />
+      <input type="password" name="confirmPW" id="confirmPW" required />
       <br /><br />
-      <button type="submit">SUBMIT</button>
+      <button id="signupBtn" >SUBMIT</button>
     </form>
     <p>
       If you have an account and would like to save in the cloud <a href="/">Login here</a>.
     </p>
     <p>
-      If you don't have an account and would like to save on your devce <a href="/workday">Continue here</a>.
+      If you don't have an account and would like to save on your devce <a href="/localstorage">Continue here</a>.
     </p>
-  </body>
-</main>
+  </main>
+
+    <script src="js/signup.js"></script>
+</body>
 
 </html>

@@ -11,6 +11,10 @@ router.get('/workday', (req, res) => {
   res.sendFile(path.join(__dirname, '../public', 'scheduler.html'));
 });
 
+router.get('/localstorage', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public', 'local.html'));
+});
+
 
 // GET route for the signup page
 router.get('/signup', (req, res) => {

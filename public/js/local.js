@@ -1,24 +1,15 @@
 
-const h24 = 60 * 60 * 24 * 1000;
+let store = [];
 let now = Date.now();
 let d = new Date(now);
 let nextMonday = Date.now();
+const h24 = 60 * 60 * 24 * 1000;
 const main = document.getElementById('main');
-
-let store; 
-
 
 const handleChange = (e, dayTime) => {
   store[dayTime] = e.value;
-
-  fetch('/api/data', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(store)
-  });
-};
+  localStorage.dayTime = JSON.stringify(store);
+}
 
 const handleCheck = dayTime => {
   let value = store[dayTime];
@@ -37,14 +28,7 @@ const handleCheck = dayTime => {
     );
 
   store[dayTime] = value;
-  
-  fetch('/api/data', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(store)
-  });
+  localStorage.dayTime = JSON.stringify(store);
 };
 
 const findNextMon = () => {
@@ -92,10 +76,7 @@ const init = (d) => {
 
   const handleStorage = async () => {
 
-    await fetch('/api/data').then(res => res.json()).then(data => {
-      console.log(data);
-      store = data;
-    });
+    store = await localStorage.dayTime ? JSON.parse(localStorage.dayTime) : {};
 
     let keys = Object.keys(store)
 
@@ -147,16 +128,8 @@ const init = (d) => {
         type: "indicator",
         mode: "gauge+number",
         delta: { reference: 400 },
-        gauge: { 
-          axis: { range: [0, 100] },
-          bar: { color: "red"}, 
-          steps: [
-            { range: [0, 50], color: "black" },
-            { range: [51, 74], color: "yellow" },
-            { range: [75, 100], color: "green" }
-          ]
-        }     
-       }
+        gauge: { axis: { range: [null, 100] } }
+      }
     ];
 
     var layout = { width: 300, height: 250, paper_bgcolor: 'transparent' };
@@ -170,15 +143,7 @@ const init = (d) => {
         type: "indicator",
         mode: "gauge+number",
         delta: { reference: 400 },
-        gauge: { 
-          axis: { range: [0, 100] },
-          bar: { color: "red"}, 
-          steps: [
-            { range: [0, 50], color: "black" },
-            { range: [51, 74], color: "yellow" },
-            { range: [75, 100], color: "green" }
-          ]
-        }
+        gauge: { axis: { range: [null, 100] } }
       }
     ];
 
@@ -216,13 +181,11 @@ const init = (d) => {
 
     var layout = { width: 350, height: 80, paper_bgcolor: 'transparent', margin: { t: 10, b: 40, l: 120, r: 60 } };
     Plotly.newPlot('chart2b', data, layout);
-
-    console.log(totalScheduled, totalHours, totalDone);
   };
 
   handleStorage();
 
-  currentDay.innerText = `${d.toDateString()}, ${d.toleTimeString()}`;
+  currentDay.innerText = `${d.toDateString()}, ${d.toLocaleTimeString()}`;
   currentDay2.innerText = `${d.toDateString()}, ${d.toLocaleTimeString()}`;
 
   const weekdays = [monday, tuesday, wednesday, thursday, friday];
