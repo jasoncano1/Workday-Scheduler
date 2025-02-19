@@ -23,12 +23,10 @@ btn.addEventListener("click",function(e){
     }).then(res=>{
         if(res.status===200){
 
-            localStorage.setItem("username",username);
-            
             username.value="";
             password.value="";
             confirmPassword.value="";
-
+            
             window.location.href="/workday";
         }else{
             res.json().then(data=>{

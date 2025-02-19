@@ -6,6 +6,15 @@ const {writeFile} = require('fs');
 
 console.log(db);
 
+// Write the updated data to the JSON file
+const storeFx = db => {
+  writeFile(path.join(__dirname, '../db/data.json'), JSON.stringify(db, null, 2), err => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('Error signing up.');
+    }
+  });
+};
 
 // In-memory user store
 // NOTE: In a production app, use a database instead of an in-memory array.
@@ -15,7 +24,7 @@ let users = [];
 router.post('/signup', async (req, res) => {
   const { username, password } = req.body;
   // Check if the user already exists
-  const userExists = users.find(user => user.username === username);
+  const userExists = Object.keys(db).includes(username);
   if (userExists) {
     return res.status(400).send('User already exists.');
   }
@@ -23,10 +32,12 @@ router.post('/signup', async (req, res) => {
     // Hash the password with a salt round of 10
     const hashedPassword = await bcrypt.hash(password, 10);
     // Store the new user
-    users.push({ username, password: hashedPassword });
+    db[username] = {password: hashedPassword };
+    
+    storeFx(db);
     console.log('New user created:', username);
     // Redirect to login page after successful signup
-    res.redirect('/login');
+    res.redirect('/workday');
   } catch (err) {
     console.error(err);
     res.status(500).send('Error signing up.');
@@ -56,19 +67,9 @@ router.post('/login', async (req, res) => {
   }
 });
 
-let data = require('./public/db/data.json');
-
-app.get('/api/data', (req, res) => {
-    res.json(data);
-});
-
-app.post('/api/data', (req, res) => {
-    data = req.body;
-    writeFile('./public/db/data.json', JSON.stringify(data, null, 2), err => {
-        if (err) throw err;
-    });
-    console.log(data);
-    res.json(data);
+router.get('/data', (req, res) => {
+  // Log the user out
+  res.json(db);
 });
 
 // GET route for the login page

@@ -39,5 +39,11 @@
   "FriFeb142025_9AM": "development class",
   "FriFeb142025_10AM": "development class",
   "FriFeb142025_11AM": "coding",
-  "FriFeb142025_12PM": "lunch"
+  "FriFeb142025_12PM": "lunch",
+  "test": {
+    "password": "$2b$10$c.9DiYGlNUB8xZpMK4U6RuzNUfOBPRCtClvYlRb7V.8mCRIgeQAye"
+  },
+  "test1": {
+    "password": "$2b$10$n1hGHaY9iR.y/INzWwTWk.R9.l/BT.e/0cj69SSMTD5HW//eQTqru"
+  }
 }

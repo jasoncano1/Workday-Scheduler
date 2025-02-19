@@ -128,8 +128,16 @@ const init = (d) => {
         type: "indicator",
         mode: "gauge+number",
         delta: { reference: 400 },
-        gauge: { axis: { range: [null, 100] } }
-      }
+        gauge: { 
+          axis: { range: [0, 100] },
+          bar: { color: "red"}, 
+          steps: [
+            { range: [0, 50], color: "black" },
+            { range: [51, 74], color: "yellow" },
+            { range: [75, 100], color: "green" }
+          ]
+        }     
+       }
     ];
 
     var layout = { width: 300, height: 250, paper_bgcolor: 'transparent' };
@@ -143,7 +151,15 @@ const init = (d) => {
         type: "indicator",
         mode: "gauge+number",
         delta: { reference: 400 },
-        gauge: { axis: { range: [null, 100] } }
+        gauge: { 
+          axis: { range: [0, 100] },
+          bar: { color: "red"}, 
+          steps: [
+            { range: [0, 50], color: "black" },
+            { range: [51, 74], color: "yellow" },
+            { range: [75, 100], color: "green" }
+          ]
+        }
       }
     ];
 
