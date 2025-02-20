@@ -1,49 +1,133 @@
-{
-  "MonFeb102025_2PM": "robotic development",
-  "MonFeb102025_3PM": "robotic development",
-  "MonFeb102025_1PM": "robotic development",
-  "MonFeb102025_9AM": "development class",
-  "MonFeb102025_10AM": "development class",
-  "MonFeb102025_11AM": "coding",
-  "MonFeb102025_12PM": "lunch",
-  "TueFeb112025_2PM": "robotic development",
-  "TueFeb112025_3PM": "robotic development",
-  "TueFeb112025_1PM": "robotic development",
-  "TueFeb112025_4PM": "book study",
-  "TueFeb112025_5PM": "book study",
-  "TueFeb112025_9AM": "Robotics Development_done",
-  "TueFeb112025_10AM": "development class",
-  "TueFeb112025_11AM": "coding",
-  "TueFeb112025_12PM": "lunch",
-  "WedFeb122025_1PM": "robotic development",
-  "WedFeb122025_2PM": "robotic development",
-  "WedFeb122025_3PM": "robotic development",
-  "WedFeb122025_4PM": "book study",
-  "WedFeb122025_5PM": "book study",
-  "WedFeb122025_9AM": "development class",
-  "WedFeb122025_10AM": "development class",
-  "WedFeb122025_11AM": "coding",
-  "WedFeb122025_12PM": "lunch",
-  "ThuFeb132025_1PM": "robotic development",
-  "ThuFeb132025_2PM": "robotic development",
-  "ThuFeb132025_3PM": "robotic development",
-  "ThuFeb132025_4PM": "book study",
-  "ThuFeb132025_5PM": "book study",
-  "ThuFeb132025_9AM": "development class",
-  "ThuFeb132025_10AM": "development class",
-  "ThuFeb132025_11AM": "coding",
-  "ThuFeb132025_12PM": "lunch",
-  "FriFeb142025_1PM": "robotic development",
-  "FriFeb142025_2PM": "robotic development",
-  "FriFeb142025_3PM": "robotic development",
-  "FriFeb142025_9AM": "development class",
-  "FriFeb142025_10AM": "development class",
-  "FriFeb142025_11AM": "coding",
-  "FriFeb142025_12PM": "lunch",
-  "test": {
-    "password": "$2b$10$c.9DiYGlNUB8xZpMK4U6RuzNUfOBPRCtClvYlRb7V.8mCRIgeQAye"
-  },
-  "test1": {
-    "password": "$2b$10$n1hGHaY9iR.y/INzWwTWk.R9.l/BT.e/0cj69SSMTD5HW//eQTqru"
+[
+  {
+    "username": "jasoncano1",
+    "password": "$2b$10$WtcllE8laEH2AY9ai9h9cuO4M6Fk4GUgfFNvhjjh57b/EKAZmAwl6",
+    "tasks": [
+      {
+        "task": "robotic development",
+        "date": "WedFeb122025_1PM",
+        "status": "pending"
+      },
+      {
+        "task": "robotic development",
+        "date": "WedFeb122025_2PM",
+        "status": "pending"
+      },
+      {
+        "task": "robotic development",
+        "date": "WedFeb122025_3PM",
+        "status": "pending"
+      },
+      {
+        "task": "book study",
+        "date": "WedFeb122025_4PM",
+        "status": "pending"
+      },
+      {
+        "task": "book study",
+        "date": "WedFeb122025_5PM",
+        "status": "pending"
+      },
+      {
+        "task": "development class",
+        "date": "WedFeb122025_9AM",
+        "status": "pending"
+      },
+      {
+        "task": "development class",
+        "date": "WedFeb122025_10AM",
+        "status": "pending"
+      },
+      {
+        "task": "coding",
+        "date": "WedFeb122025_11AM",
+        "status": "pending"
+      },
+      {
+        "task": "lunch",
+        "date": "WedFeb122025_12PM",
+        "status": "pending"
+      },
+      {
+        "task": "robotic development",
+        "date": "ThuFeb132025_1PM",
+        "status": "pending"
+      },
+      {
+        "task": "robotic development",
+        "date": "ThuFeb132025_2PM",
+        "status": "pending"
+      },
+      {
+        "task": "robotic development",
+        "date": "ThuFeb132025_3PM",
+        "status": "pending"
+      },
+      {
+        "task": "book study",
+        "date": "ThuFeb132025_4PM",
+        "status": "pending"
+      },
+      {
+        "task": "book study",
+        "date": "ThuFeb132025_5PM",
+        "status": "pending"
+      },
+      {
+        "task": "development class",
+        "date": "ThuFeb132025_9AM",
+        "status": "pending"
+      },
+      {
+        "task": "development class",
+        "date": "ThuFeb132025_10AM",
+        "status": "pending"
+      },
+      {
+        "task": "coding",
+        "date": "ThuFeb132025_11AM",
+        "status": "pending"
+      },
+      {
+        "task": "lunch",
+        "date": "ThuFeb132025_12PM",
+        "status": "pending"
+      },
+      {
+        "task": "robotic development",
+        "date": "FriFeb142025_1PM",
+        "status": "pending"
+      },
+      {
+        "task": "robotic development",
+        "date": "FriFeb142025_2PM",
+        "status": "pending"
+      },
+      {
+        "task": "robotic development",
+        "date": "FriFeb142025_3PM",
+        "status": "pending"
+      },
+      {
+        "task": "development class",
+        "date": "FriFeb142025_9AM",
+        "status": "pending"
+      },
+      {
+        "task": "development class",
+        "date": "FriFeb142025_10AM",
+        "status": "pending"
+      },
+      {
+        "task": "coding",
+        "date": "FriFeb142025_11AM",
+        "status": "pending"
+      },
+      {
+        "task": "lunch",
+        "date": "FriFeb142025_12PM",
+        "status": "pending"
+      }
+    ]
   }
-}
+]

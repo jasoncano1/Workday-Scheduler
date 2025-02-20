@@ -4,14 +4,8 @@ btn.addEventListener("click",function(e){
     e.preventDefault();
     const username=document.getElementById("username").value;
     const password=document.getElementById("password").value;
-    const confirmPassword=document.getElementById("confirmPW").value;
 
-    if(password!==confirmPassword){
-        alert("Passwords do not match");
-        return;
-    }
-
-    fetch("/api/signup",{
+    fetch("/api/login",{
         method:"POST",
         headers:{
             "Content-Type":"application/json"
@@ -25,8 +19,6 @@ btn.addEventListener("click",function(e){
 
             username.value="";
             password.value="";
-            confirmPassword.value="";
-            
             window.location.href="/workday";
         }else{
             res.json().then(data=>{

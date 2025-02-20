@@ -24,7 +24,7 @@ let users = [];
 router.post('/signup', async (req, res) => {
   const { username, password } = req.body;
   // Check if the user already exists
-  const userExists = Object.keys(db).includes(username);
+  const userExists = db.find(users=>users.username === username);
   if (userExists) {
     return res.status(400).send('User already exists.');
   }
@@ -32,7 +32,7 @@ router.post('/signup', async (req, res) => {
     // Hash the password with a salt round of 10
     const hashedPassword = await bcrypt.hash(password, 10);
     // Store the new user
-    db[username] = {password: hashedPassword };
+    db.push({"username":username, password: hashedPassword, "tasks":[]});
     
     storeFx(db);
     console.log('New user created:', username);
@@ -48,7 +48,7 @@ router.post('/signup', async (req, res) => {
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
   // Find the user by username
-  const user = users.find(user => user.username === username);
+  const user = db.find(user => user.username === username);
   if (!user) {
     return res.status(400).send('Invalid username or password.');
   }

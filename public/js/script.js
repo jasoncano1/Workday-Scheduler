@@ -86,7 +86,7 @@ const init = (d) => {
 
   const username = localStorage.getItem("username");
 
-  documnet.getElementById("username").innerText = `Welcome ${username}`;
+  document.getElementById("username").innerText = `Welcome ${username}`;
   
   let monday = new Date(d.getDay != 1 ? d - (d.getDay() - 1) * 86400000 : d).toDateString().split(' ').join('');
   let tuesday = new Date(d.getDay != 1 ? d - (d.getDay() - 2) * 86400000 : d).toDateString().split(' ').join('');
