@@ -1,4 +1,9 @@
 
+
+if (!localStorage.getItem("username")) {
+  window.location.href = "/";
+};
+
 const h24 = 60 * 60 * 24 * 1000;
 let now = Date.now();
 let d = new Date(now);

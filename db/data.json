@@ -129,5 +129,10 @@
         "status": "pending"
       }
     ]
+  },
+  {
+    "username": "test3",
+    "password": "$2b$10$0ovOCAA0bpp8U/7VTHZdvebSwmCkVnHkKIVbl19HgdqTFqi9FOBbK",
+    "tasks": []
   }
 ]

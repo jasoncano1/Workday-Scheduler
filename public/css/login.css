@@ -1,6 +1,15 @@
 body {
     margin: 0;
-    background: #f0f0f0;
+    background: #e2f3f5;
+}
+
+header {
+    background: #e2f3f5;
+    color: #0b0b0b;
+    padding: 10px 0;
+    text-align: center;
+    width: 90%;
+    margin: 5px auto;
 }
 
 #title {
