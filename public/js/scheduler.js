@@ -1,6 +1,7 @@
 
 
 if (!localStorage.getItem("username")) {
+  clearLocalStorage();
   window.location.href = "/";
 };
 

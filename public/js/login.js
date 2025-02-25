@@ -1,4 +1,4 @@
-const btn=document.getElementById("signupBtn");
+const btn=document.getElementById("loginBtn");
 
 btn.addEventListener("click",function(e){
     e.preventDefault();
@@ -19,6 +19,7 @@ btn.addEventListener("click",function(e){
 
             username.value="";
             password.value="";
+            localStorage.setItem("username",username);
             window.location.href="/workday";
         }else{
             res.json().then(data=>{
