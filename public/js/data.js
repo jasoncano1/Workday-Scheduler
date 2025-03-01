@@ -39,7 +39,7 @@ let data = {
     FriFeb282025_4PM: "Robotic development_done",
     FriFeb282025_5PM: "Robotic development_done",
     FriFeb282025_9AM: "Development class_done",
-    FriFeb282025_10AM: "Coding_Done",
+    FriFeb282025_10AM: "Coding_done",
     FriFeb282025_11AM: "coding_done",
     FriFeb282025_12PM: "lunch_done",
 }
