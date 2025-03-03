@@ -127,12 +127,22 @@
         "task": "lunch",
         "date": "FriFeb142025_12PM",
         "status": "pending"
+      },
+      {
+        "task": "Coding class",
+        "date": "MonMar032025_9AM",
+        "status": "pending"
       }
     ]
   },
   {
     "username": "test3",
     "password": "$2b$10$0ovOCAA0bpp8U/7VTHZdvebSwmCkVnHkKIVbl19HgdqTFqi9FOBbK",
+    "tasks": []
+  },
+  {
+    "username": "test",
+    "password": "$2b$10$ls0c8j/OndlUUzCbRKNze.xtjl6vRwN0Hh/ebhc970go1LI.sUVLq",
     "tasks": []
   }
 ]

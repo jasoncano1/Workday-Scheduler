@@ -1,7 +1,6 @@
 
 
 if (!localStorage.getItem("username")) {
-  clearLocalStorage();
   window.location.href = "/";
 };
 
@@ -11,23 +10,25 @@ let d = new Date(now);
 let nextMonday = Date.now();
 const main = document.getElementById('main');
 
-let store; 
-
+let user;
 
 const handleChange = (e, dayTime) => {
-  store[dayTime] = e.value;
+  user[dayTime] = e.value;
+
+  user.tasks = user.tasks.filter(obj => obj.date !== dayTime);
+  user.tasks.push({ date: dayTime, task: e.value, status: "pending" });
 
   fetch('/api/data', {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(store)
+    body: JSON.stringify(user)
   });
 };
 
 const handleCheck = dayTime => {
-  let value = store[dayTime];
+  let value = user[dayTime];
   let [d, h] = dayTime.split("_");
   let day = document.getElementById(d);
   let hour = day.querySelector(`._${h}`);
@@ -42,14 +43,14 @@ const handleCheck = dayTime => {
       hour.style.textDecoration = "line-through"
     );
 
-  store[dayTime] = value;
-  
+  user[dayTime] = value;
+
   fetch('/api/data', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(store)
+    body: JSON.stringify(user)
   });
 };
 
@@ -71,7 +72,7 @@ const findNextMon = () => {
 };
 
 const findPrevMon = () => {
-  
+
   nextMonday = nextMonday - 7 * h24;
   while (new Date(nextMonday).getDay() != 1) {
     nextMonday = nextMonday - h24
@@ -91,9 +92,10 @@ const findPrevMon = () => {
 const init = (d) => {
 
   const username = localStorage.getItem("username");
+  // localStorage.clear();
 
   document.getElementById("username").innerText = `Welcome ${username}`;
-  
+
   let monday = new Date(d.getDay != 1 ? d - (d.getDay() - 1) * 86400000 : d).toDateString().split(' ').join('');
   let tuesday = new Date(d.getDay != 1 ? d - (d.getDay() - 2) * 86400000 : d).toDateString().split(' ').join('');
   let wednesday = new Date(d.getDay != 1 ? d - (d.getDay() - 3) * 86400000 : d).toDateString().split(' ').join('');
@@ -102,30 +104,35 @@ const init = (d) => {
 
   const handleStorage = async () => {
 
-    await fetch('/api/data').then(res => res.json()).then(data => {
-      console.log(data);
-      store = data;
+    await fetch('/api/data', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ username })
+    }).then(res => res.json()).then(data => {
+      user = data;
     });
 
-    let keys = Object.keys(store)
+    let dateTimes = user.tasks.map(obj => obj.date);
 
-    if (keys) {
-      keys.forEach(dayTime => {
+    if (dateTimes) {
+      dateTimes.forEach(dayTime => {
         let [d, h] = dayTime.split("_");
         let day = document.getElementById(d);
 
         if (day?.querySelector(`._${h}`)) {
 
-        let hour = day.querySelector(`._${h}`);
-        let checkbox = day.querySelector(`._${h}[type=checkbox]`);
-        let value = store[dayTime].split("_");
-        hour.value = value[0];
+          let hour = day.querySelector(`._${h}`);
+          let checkbox = day.querySelector(`._${h}[type=checkbox]`);
 
-        if (value[1]) {
-          checkbox.checked = true;
-          hour.style.textDecoration = "line-through";
+          hour.value = user.tasks.find(obj => obj.date === dayTime).task;
+
+          if (user.tasks.find(obj => obj.date === dayTime).status === "done") {
+            checkbox.checked = true;
+            hour.style.textDecoration = "line-through";
+          }
         }
-      }
       });
     }
 
@@ -141,7 +148,7 @@ const init = (d) => {
           if (dayTime.includes(day)) {
             totalScheduled += 1;
 
-            if (store[dayTime].includes("done")) {
+            if (user[dayTime].includes("done")) {
               totalDone += 1
             };
           };
@@ -157,16 +164,16 @@ const init = (d) => {
         type: "indicator",
         mode: "gauge+number",
         delta: { reference: 400 },
-        gauge: { 
+        gauge: {
           axis: { range: [0, 100] },
-          bar: { color: "red"}, 
+          bar: { color: "red" },
           steps: [
             { range: [0, 50], color: "black" },
             { range: [51, 74], color: "yellow" },
             { range: [75, 100], color: "green" }
           ]
-        }     
-       }
+        }
+      }
     ];
 
     var layout = { width: 300, height: 250, paper_bgcolor: 'transparent' };
@@ -180,9 +187,9 @@ const init = (d) => {
         type: "indicator",
         mode: "gauge+number",
         delta: { reference: 400 },
-        gauge: { 
+        gauge: {
           axis: { range: [0, 100] },
-          bar: { color: "red"}, 
+          bar: { color: "red" },
           steps: [
             { range: [0, 50], color: "black" },
             { range: [51, 74], color: "yellow" },
@@ -227,7 +234,6 @@ const init = (d) => {
     var layout = { width: 350, height: 80, paper_bgcolor: 'transparent', margin: { t: 10, b: 40, l: 120, r: 60 } };
     Plotly.newPlot('chart2b', data, layout);
 
-    console.log(totalScheduled, totalHours, totalDone);
   };
 
   handleStorage();
@@ -243,12 +249,11 @@ const init = (d) => {
   weekdays.forEach((date, i) => {
 
     main.innerHTML += `
-    <section id=${date} class=${
-      new Date() - d > 86400000 ? "past" : 
-      new Date() - d < -86400000 ? "future" : 
-      i + 1 < d.getDay() ? "past" : 
-      i + 1 == d.getDay() ? "present" : "future"
-    }>
+    <section id=${date} class=${new Date() - d > 86400000 ? "past" :
+        new Date() - d < -86400000 ? "future" :
+          i + 1 < d.getDay() ? "past" :
+            i + 1 == d.getDay() ? "present" : "future"
+      }>
       
       <h5>${i == 0 ? 'Monday' :
         i == 1 ? 'Tuesday' :
@@ -294,12 +299,12 @@ nextWk.addEventListener('click', findNextMon);
 prevWk.addEventListener('click', findPrevMon);
 
 const showToday = () =>
-main.scrollTo({
-  left: document.querySelector('.present').getBoundingClientRect().x - main.getBoundingClientRect().x,
-  behavior: 'smooth'
-});
+  main.scrollTo({
+    left: document.querySelector('.present').getBoundingClientRect().x - main.getBoundingClientRect().x,
+    behavior: 'smooth'
+  });
 
-today.onclick = () =>{
+today.onclick = () => {
   init(new Date());
   showToday();
 }

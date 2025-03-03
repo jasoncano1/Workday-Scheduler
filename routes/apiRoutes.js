@@ -4,8 +4,6 @@ const path = require('path');
 const db = require('../db/data.json'); // Import the data from the JSON file
 const {writeFile} = require('fs');
 
-console.log(db);
-
 // Write the updated data to the JSON file
 const storeFx = db => {
   writeFile(path.join(__dirname, '../db/data.json'), JSON.stringify(db, null, 2), err => {
@@ -67,10 +65,18 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.get('/data', (req, res) => {
-  // Log the user out
-  res.json(db);
+router.post('/data', (req, res) => {
+  const { username } = req.body;
+  // Find the user by username
+  const user = db.find(user => user.username === username);
+  res.json(user);
 });
+
+
+router.put('/data', (req, res) => {
+  console.log("test1: ",req.body);
+  res.json('success');
+})
 
 // GET route for the login page
 module.exports = router;
