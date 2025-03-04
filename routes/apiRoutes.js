@@ -74,9 +74,12 @@ router.post('/data', (req, res) => {
 
 
 router.put('/data', (req, res) => {
-  console.log("test1: ",req.body);
+  db = db.filter(user => user.username !== req.body.username);
+  db.push(req.body);
+  console.log("test1: ",db);
+  storeFx(db);
   res.json('success');
-})
+});
 
 // GET route for the login page
 module.exports = router;

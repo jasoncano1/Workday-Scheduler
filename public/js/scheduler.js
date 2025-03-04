@@ -13,7 +13,6 @@ const main = document.getElementById('main');
 let user;
 
 const handleChange = (e, dayTime) => {
-  user[dayTime] = e.value;
 
   user.tasks = user.tasks.filter(obj => obj.date !== dayTime);
   user.tasks.push({ date: dayTime, task: e.value, status: "pending" });
@@ -28,22 +27,22 @@ const handleChange = (e, dayTime) => {
 };
 
 const handleCheck = dayTime => {
-  let value = user[dayTime];
+  let task = user.tasks.find(obj=>obj.date==dayTime);
   let [d, h] = dayTime.split("_");
   let day = document.getElementById(d);
   let hour = day.querySelector(`._${h}`);
   let checkbox = day.querySelector(`._${h}[type=checkbox]`);
 
-  value.includes("done")
+  
+
+  checkbox.checked==false
     ? (
-      value = value.replace("_done", ""),
       hour.style.textDecoration = "none"
     ) : (
-      value = `${value}_done`,
       hour.style.textDecoration = "line-through"
     );
 
-  user[dayTime] = value;
+  user[dayTime] = status;
 
   fetch('/api/data', {
     method: 'POST',
@@ -144,11 +143,11 @@ const init = (d) => {
       if (i + 1 < d.getDay()) {
         totalHours += 9;
 
-        keys.forEach(dayTime => {
+        dateTimes.forEach(dayTime => {
           if (dayTime.includes(day)) {
             totalScheduled += 1;
 
-            if (user[dayTime].includes("done")) {
+            if (user.tasks.find(obj => obj.date == dayTime).status == "done") {
               totalDone += 1
             };
           };
