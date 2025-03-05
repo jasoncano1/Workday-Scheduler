@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" href="./css/login.css" />
+  <meta charset="UTF-8" />
+  <title>Login Page</title>
+  <!-- Add your CSS styling here -->
+</head>
+
+<body>
+  <header>
+    <h1 id="title">Workday Scheduler</h1>
+    <p>The Workday Scheduler offers a sleek, user-friendly interface that streamlines weekly planning by accurately allocating time to tasks, reducing overlaps, and helping users track progress through built-in analytics. Its flexible design lets you choose between cloud-based or local storage, ensuring your schedule is always accessible. The straightforward login process, combined with an intuitive layout, promotes quick setup and effortless navigation, allowing users to focus on their work rather than managing complex tools.</p>
+  </header>
+
+  <main id="main">
+    <h1>Login</h1>
+    <!-- Form sends a POST request to /login -->
+    <form> 
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" required />
+      <br /><br />
+      <label for="password">Password:</label>
+      <input type="password" name="password" id="password" required />
+      <br /><br />
+      <button type="submit" id="loginBtn">SUBMIT</button>
+    </form>
+    <p>
+      If you don't have an account and would like to save in the cloud <a href="/signup">Sign up here</a>.
+    </p>
+    <p>
+      If you don't have an account and would like to save on your devce <a href="/localstorage">Continue</a>.
+    </p>
+  </main>
+  <script src="./js/login.js"></script>
+</body>
+
+</html>

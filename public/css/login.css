@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    background: #e2f3f5;
+}
+
+header {
+    background: #e2f3f5;
+    color: #0b0b0b;
+    padding: 10px 0;
+    text-align: center;
+    margin: 5px auto;
+    max-width: 1000px;
+    margin: 20px auto;
+}
+
+#title {
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 20px;
+}
+
+main {
+    border: 2px solid black;
+    margin: 5px auto;
+    padding: 20px;
+    border-radius: 5px;
+    background: #acd7e5;
+    width: 520px;
+}
