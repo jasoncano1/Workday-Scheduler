@@ -10,6 +10,8 @@ const storeFx = db => {
     if (err) {
       console.error(err);
       return res.status(500).send('Error signing up.');
+    }else{
+      console.log('Data stored');
     }
   });
 };
@@ -74,11 +76,19 @@ router.post('/data', (req, res) => {
 
 
 router.put('/data', (req, res) => {
-  db = db.filter(user => user.username !== req.body.username);
-  db.push(req.body);
-  console.log("test1: ",db);
-  storeFx(db);
-  res.json('success');
+  
+  let newDb = db.filter(user => user.username !== req.body.username);
+  
+  newDb.push(req.body);
+  writeFile(path.join(__dirname, '../db/data.json'), JSON.stringify(newDb, null, 2), err => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('Error signing up.');
+    }else{
+      console.log('Data stored');
+      res.json('success');
+    }
+  });
 });
 
 // GET route for the login page

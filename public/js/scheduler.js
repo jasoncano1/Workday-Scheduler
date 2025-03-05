@@ -12,40 +12,25 @@ const main = document.getElementById('main');
 
 let user;
 
-const handleChange = (e, dayTime) => {
+const handleChange = dayTime => {
 
-  user.tasks = user.tasks.filter(obj => obj.date !== dayTime);
-  user.tasks.push({ date: dayTime, task: e.value, status: "pending" });
-
-  fetch('/api/data', {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(user)
-  });
-};
-
-const handleCheck = dayTime => {
-  let task = user.tasks.find(obj=>obj.date==dayTime);
   let [d, h] = dayTime.split("_");
   let day = document.getElementById(d);
   let hour = day.querySelector(`._${h}`);
   let checkbox = day.querySelector(`._${h}[type=checkbox]`);
 
-  
-
-  checkbox.checked==false
+  checkbox.checked == false
     ? (
       hour.style.textDecoration = "none"
     ) : (
       hour.style.textDecoration = "line-through"
     );
 
-  user[dayTime] = status;
+  user.tasks = user.tasks.filter(obj => obj.date !== dayTime);
+  user.tasks.push({ date: dayTime, task: hour.value, status: checkbox.checked ? "done" : "pending" });
 
   fetch('/api/data', {
-    method: 'POST',
+    method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -276,15 +261,15 @@ const init = (d) => {
             `
           <div>
             <h5>${hour}</h5>
-            <input class="_${hour}" onChange="handleChange(this, '${date}_${hour}')" />
+            <input class="_${hour}" onChange="handleChange('${date}_${hour}')" />
             <input class="_${hour}" disabled type="checkbox" />
           </div>
         `:
             `
           <div>
             <h5>${hour}</h5>
-            <input class="_${hour}" onChange="handleChange(this, '${date}_${hour}')" />
-            <input class="_${hour}" onChange="handleCheck('${date}_${hour}')" type="checkbox" />
+            <input class="_${hour}" onChange="handleChange('${date}_${hour}')" />
+            <input class="_${hour}" onChange="handleChange('${date}_${hour}')" type="checkbox" />
           </div>
         `
     });
