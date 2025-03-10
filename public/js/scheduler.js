@@ -303,6 +303,8 @@ const prevWeekinit = (d) => {
 
     let dateTimes = user.tasks.map(obj => obj.date);
 
+    console.log("dayTime", dateTimes);
+
     if (dateTimes) {
       dateTimes.forEach(dayTime => {
         let [d, h] = dayTime.split("_");
@@ -340,6 +342,9 @@ const prevWeekinit = (d) => {
             };
           };
         });
+
+        console.log("test2: ", totalScheduled, totalDone);
+        
     });
 
     var data = [
@@ -402,8 +407,6 @@ const prevWeekinit = (d) => {
 
     var layout = { width: 350, height: 80, paper_bgcolor: 'transparent', margin: { t: 10, b: 40, l: 120, r: 60 } };
     Plotly.newPlot('chart1b', data, layout);
-
-
 
     var data = [
       {
