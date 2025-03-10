@@ -310,26 +310,6 @@
     "status": "done"
   },
   {
-    "task": "robotic development",
-    "date": "FriFeb142025_1PM",
-    "status": "pending"
-  },
-  {
-    "task": "robotic development",
-    "date": "FriFeb142025_2PM",
-    "status": "pending"
-  },
-  {
-    "task": "robotic development",
-    "date": "FriFeb142025_3PM",
-    "status": "pending"
-  },
-  {
-    "task": "development class",
-    "date": "FriFeb142025_9AM",
-    "status": "pending"
-  },
-  {
     "task": "robotic Development",
     "date": "MonFeb242025_2PM",
     "status": "done"
@@ -420,21 +400,6 @@
     "status": "done"
   },
   {
-    "task": "development class",
-    "date": "WedFeb122025_9AM",
-    "status": "done"
-  },
-  {
-    "task": "development class",
-    "date": "WedFeb122025_10AM",
-    "status": "done"
-  },
-  {
-    "task": "coding",
-    "date": "WedFeb122025_11AM",
-    "status": "done"
-  },
-  {
     "task": "Lunch",
     "date": "WedFeb122025_12PM",
     "status": "done"
@@ -483,41 +448,6 @@
     "task": "Meeting Northland",
     "date": "ThuFeb202025_12PM",
     "status": "done"
-  },
-  {
-    "task": "robotic development",
-    "date": "FriFeb142025_1PM",
-    "status": "pending"
-  },
-  {
-    "task": "robotic development",
-    "date": "FriFeb142025_2PM",
-    "status": "pending"
-  },
-  {
-    "task": "robotic development",
-    "date": "FriFeb142025_3PM",
-    "status": "pending"
-  },
-  {
-    "task": "development class",
-    "date": "FriFeb142025_9AM",
-    "status": "pending"
-  },
-  {
-    "task": "development class",
-    "date": "FriFeb142025_10AM",
-    "status": "pending"
-  },
-  {
-    "task": "coding",
-    "date": "FriFeb142025_11AM",
-    "status": "pending"
-  },
-  {
-    "task": "lunch",
-    "date": "FriFeb142025_12PM",
-    "status": "pending"
   },
   {
     "task": "Coding Development",
@@ -677,6 +607,151 @@
   {
     "task": "Lunch",
     "date": "FriMar072025_12PM",
+    "status": "pending"
+  },
+  {
+    "task": "Coding Development",
+    "date": "MonMar102025_9AM",
+    "status": "pending"
+  },
+  {
+    "task": "Coding",
+    "date": "MonMar102025_10AM",
+    "status": "pending"
+  },
+  {
+    "task": "Lunch",
+    "date": "MonMar102025_11AM",
+    "status": "pending"
+  },
+  {
+    "task": "Pull Everything out for",
+    "date": "MonMar102025_12PM",
+    "status": "pending"
+  },
+  {
+    "task": "Work on Desk",
+    "date": "MonMar102025_1PM",
+    "status": "pending"
+  },
+  {
+    "task": "Work on Desk",
+    "date": "MonMar102025_2PM",
+    "status": "pending"
+  },
+  {
+    "task": "Work on Work Station",
+    "date": "MonMar102025_3PM",
+    "status": "pending"
+  },
+  {
+    "task": "Work on Work Station",
+    "date": "MonMar102025_4PM",
+    "status": "pending"
+  },
+  {
+    "task": "Work on Work Station",
+    "date": "MonMar102025_5PM",
+    "status": "pending"
+  },
+  {
+    "task": "Coding Development",
+    "date": "TueMar112025_9AM",
+    "status": "pending"
+  },
+  {
+    "task": "Lunch & Get Ready",
+    "date": "TueMar112025_10AM",
+    "status": "pending"
+  },
+  {
+    "task": "Leave for Meeting",
+    "date": "TueMar112025_11AM",
+    "status": "pending"
+  },
+  {
+    "task": "Meeting Northland",
+    "date": "TueMar112025_12PM",
+    "status": "pending"
+  },
+  {
+    "task": "Socialize",
+    "date": "TueMar112025_1PM",
+    "status": "pending"
+  },
+  {
+    "task": "Notary",
+    "date": "TueMar112025_2PM",
+    "status": "pending"
+  },
+  {
+    "task": "Tax Office",
+    "date": "TueMar112025_3PM",
+    "status": "pending"
+  },
+  {
+    "task": "Tax Office",
+    "date": "TueMar112025_4PM",
+    "status": "pending"
+  },
+  {
+    "task": "Tax Office & Home",
+    "date": "TueMar112025_5PM",
+    "status": "pending"
+  },
+  {
+    "task": "Coding Development",
+    "date": "WedMar122025_9AM",
+    "status": "pending"
+  },
+  {
+    "task": "Coding Development",
+    "date": "WedMar122025_10AM",
+    "status": "pending"
+  },
+  {
+    "task": "Lunch",
+    "date": "WedMar122025_11AM",
+    "status": "pending"
+  },
+  {
+    "task": "Work on Desk",
+    "date": "WedMar122025_12PM",
+    "status": "pending"
+  },
+  {
+    "task": "Work on Desk",
+    "date": "WedMar122025_1PM",
+    "status": "pending"
+  },
+  {
+    "task": "Work on 4th Step",
+    "date": "WedMar122025_2PM",
+    "status": "pending"
+  },
+  {
+    "task": "Work on 4th Step",
+    "date": "WedMar122025_3PM",
+    "status": "pending"
+  },
+  {
+    "task": "Work on Table",
+    "date": "WedMar122025_4PM",
+    "status": "pending"
+  },
+  {
+    "task": "Work on Table",
+    "date": "WedMar122025_5PM",
+    "status": "pending"
+  },
+  {
+    "task": "Coding Development",
+    "date": "ThuMar132025_9AM",
+    "status": "pending"
+  },
+  {
+    "task": "Lunch & Get Ready",
+    "date": "ThuMar132025_10AM",
     "status": "pending"
   }
 ]
