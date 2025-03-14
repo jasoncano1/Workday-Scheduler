@@ -7,6 +7,7 @@ if (!localStorage.getItem("username")) {
 const h24 = 60 * 60 * 24 * 1000;
 let now = Date.now();
 let d = new Date(now);
+let newD = new Date(now);
 let nextMonday = Date.now();
 const main = document.getElementById('main');
 
@@ -35,7 +36,7 @@ const handleChange = dayTime => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(user)
-  });
+  })
 };
 
 const findNextMon = () => {
@@ -48,7 +49,8 @@ const findNextMon = () => {
   main.classList.toggle("slideLeftOut", true);
   setTimeout(() => {
     main.innerHTML = "";
-    init(new Date(nextMonday));
+    newD = new Date(nextMonday);
+    init(newD);
   }, 500);
   setTimeout(() => {
     main.classList.toggle("slideLeftOut", false);
@@ -65,7 +67,8 @@ const findPrevMon = () => {
   main.classList.toggle("slideRightOut", true);
   setTimeout(() => {
     main.innerHTML = "";
-    init(new Date(nextMonday));
+    newD = new Date(nextMonday);
+    init(newD);
   }, 500);
   setTimeout(() => {
     main.classList.toggle("slideRightOut", false);
@@ -134,9 +137,6 @@ const init = (d) => {
           };
         });
     });
-
-    console.log('test:1 ',totalScheduled, totalDone);
-    
 
     var data = [
       {

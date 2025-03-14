@@ -424,39 +424,9 @@
         "status": "pending"
       },
       {
-        "date": "MonMar242025_9AM",
-        "task": "asdasfd",
-        "status": "pending"
-      },
-      {
-        "date": "MonMar242025_10AM",
-        "task": "asdfasdf",
-        "status": "pending"
-      },
-      {
-        "date": "MonMar242025_11AM",
-        "task": "asdfasdf",
-        "status": "pending"
-      },
-      {
         "date": "ThuMar132025_9AM",
         "task": "Coding Class",
         "status": "done"
-      },
-      {
-        "date": "ThuMar132025_10AM",
-        "task": "asdffasd",
-        "status": "done"
-      },
-      {
-        "date": "ThuMar132025_11AM",
-        "task": "asdasdf",
-        "status": "done"
-      },
-      {
-        "date": "ThuMar132025_12PM",
-        "task": "asdasf",
-        "status": "pending"
       }
     ]
   }
