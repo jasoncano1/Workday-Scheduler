@@ -189,7 +189,6 @@ const findPrevMon = () => {
 };
 
 const init = (dateTimes) => {
-
   
   // localStorage.clear();
 
@@ -218,10 +217,7 @@ const init = (dateTimes) => {
     }
 
     console.log('dateTimes: ', dateTimes);
-    
-
     // gaugeFx(dateTimes);
-
   };
 
   handleStorage();
