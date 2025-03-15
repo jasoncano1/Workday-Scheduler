@@ -427,6 +427,176 @@
         "date": "ThuMar132025_9AM",
         "task": "Coding Class",
         "status": "done"
+      },
+      {
+        "date": "FriMar142025_9AM",
+        "task": "Coding Development",
+        "status": "done"
+      },
+      {
+        "date": "FriMar142025_10AM",
+        "task": "work on Self",
+        "status": "done"
+      },
+      {
+        "date": "FriMar142025_11AM",
+        "task": "Get Ready",
+        "status": "pending"
+      },
+      {
+        "date": "FriMar142025_12PM",
+        "task": "Drive to Tax Office",
+        "status": "pending"
+      },
+      {
+        "date": "FriMar142025_1PM",
+        "task": "Tax Office - Registartation",
+        "status": "pending"
+      },
+      {
+        "date": "FriMar142025_2PM",
+        "task": "Drive Home",
+        "status": "pending"
+      },
+      {
+        "date": "FriMar142025_3PM",
+        "task": "Work on Work Satation",
+        "status": "pending"
+      },
+      {
+        "date": "FriMar142025_4PM",
+        "task": "Work on Work Station",
+        "status": "pending"
+      },
+      {
+        "date": "FriMar142025_5PM",
+        "task": "Clean Living Room",
+        "status": "pending"
+      },
+      {
+        "date": "MonMar172025_9AM",
+        "task": "Coding Development",
+        "status": "pending"
+      },
+      {
+        "date": "MonMar172025_10AM",
+        "task": "Coding Development",
+        "status": "pending"
+      },
+      {
+        "date": "TueMar182025_9AM",
+        "task": "Coding Development",
+        "status": "pending"
+      },
+      {
+        "date": "WedMar192025_9AM",
+        "task": "Coding Development",
+        "status": "pending"
+      },
+      {
+        "date": "WedMar192025_10AM",
+        "task": "Coding Development",
+        "status": "pending"
+      },
+      {
+        "date": "ThuMar202025_9AM",
+        "task": "Coding Development",
+        "status": "pending"
+      },
+      {
+        "date": "FriMar212025_9AM",
+        "task": "Coding Development",
+        "status": "pending"
+      },
+      {
+        "date": "TueMar182025_10AM",
+        "task": "Lunch",
+        "status": "pending"
+      },
+      {
+        "date": "ThuMar202025_10AM",
+        "task": "Lunch",
+        "status": "pending"
+      },
+      {
+        "date": "FriMar212025_10AM",
+        "task": "Lunch",
+        "status": "pending"
+      },
+      {
+        "date": "TueMar182025_11AM",
+        "task": "Prepare for Meeting",
+        "status": "pending"
+      },
+      {
+        "date": "ThuMar202025_11AM",
+        "task": "Prepare for Meeting",
+        "status": "pending"
+      },
+      {
+        "date": "TueMar182025_12PM",
+        "task": "Meeting - Northland",
+        "status": "pending"
+      },
+      {
+        "date": "ThuMar202025_12PM",
+        "task": "Meeting - Northland",
+        "status": "pending"
+      },
+      {
+        "date": "WedMar192025_11AM",
+        "task": "Lunch",
+        "status": "pending"
+      },
+      {
+        "date": "MonMar172025_11AM",
+        "task": "Lunch",
+        "status": "pending"
+      },
+      {
+        "date": "MonMar172025_12PM",
+        "task": "Work on My Office",
+        "status": "pending"
+      },
+      {
+        "date": "MonMar172025_1PM",
+        "task": "Work on My Office",
+        "status": "pending"
+      },
+      {
+        "date": "TueMar182025_1PM",
+        "task": "Socialize and Drive",
+        "status": "pending"
+      },
+      {
+        "date": "TueMar182025_3PM",
+        "task": "Pick up Groceries",
+        "status": "pending"
+      },
+      {
+        "date": "WedMar192025_12PM",
+        "task": "Robotics Development",
+        "status": "pending"
+      },
+      {
+        "date": "WedMar192025_1PM",
+        "task": "Robotics Development",
+        "status": "pending"
+      },
+      {
+        "date": "ThuMar202025_1PM",
+        "task": "Socialize and Drive",
+        "status": "pending"
+      },
+      {
+        "date": "FriMar212025_11AM",
+        "task": "Work on Table",
+        "status": "pending"
+      },
+      {
+        "date": "FriMar212025_12PM",
+        "task": "Work on table",
+        "status": "pending"
       }
     ]
   }
