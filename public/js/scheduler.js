@@ -12,6 +12,11 @@ let nextMonday = Date.now();
 const main = document.getElementById('main');
 
 let user;
+let dateTimes;
+let totalDone = 0;
+let totalHours = 45;
+let totalScheduled = 0;
+const username = localStorage.getItem("username");
 
 const handleChange = dayTime => {
 
@@ -37,6 +42,114 @@ const handleChange = dayTime => {
     },
     body: JSON.stringify(user)
   })
+};
+
+const handleStorage = async () => {
+
+  await fetch('/api/data', {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ username })
+  }).then(res => res.json()).then(data => {
+    user = data;
+  });
+
+  dateTimes = user.tasks.map(obj => obj.date);
+};
+
+const gaugeFx = dateTimes => {
+
+  console.log('test: ', dateTimes);
+  
+  weekdays.forEach((day, i) => {
+      dateTimes.forEach(dayTime => {
+        if (dayTime.includes(day)) {
+          totalScheduled += 1;
+
+          if (user.tasks.find(obj => obj.date == dayTime).status == "done") {
+            totalDone += 1
+          };
+        };
+      });
+  });
+
+  var data = [
+    {
+      domain: { x: [0, 1], y: [0, 1] },
+      value: totalScheduled / totalHours * 100,
+      title: { text: "Quality" },
+      type: "indicator",
+      mode: "gauge+number",
+      delta: { reference: 400 },
+      gauge: {
+        axis: { range: [0, 100] },
+        bar: { color: "red" },
+        steps: [
+          { range: [0, 50], color: "black" },
+          { range: [51, 74], color: "yellow" },
+          { range: [75, 100], color: "green" }
+        ]
+      }
+    }
+  ];
+
+  var layout = { width: 300, height: 250, paper_bgcolor: 'transparent' };
+  Plotly.newPlot('chart1', data, layout);
+
+  var data2 = [
+    {
+      domain: { x: [0, 1], y: [0, 1] },
+      value: totalDone / (totalScheduled == 0 ? 45 : totalScheduled) * 100,
+      title: { text: "Efficiency" },
+      type: "indicator",
+      mode: "gauge+number",
+      delta: { reference: 400 },
+      gauge: {
+        axis: { range: [0, 100] },
+        bar: { color: "red" },
+        steps: [
+          { range: [0, 50], color: "black" },
+          { range: [51, 74], color: "yellow" },
+          { range: [75, 100], color: "green" }
+        ]
+      }
+    }
+  ];
+
+  var layout2 = { width: 300, height: 250, paper_bgcolor: 'transparent' };
+  Plotly.newPlot('chart2', data2, layout2);
+
+  var data = [
+    {
+      type: "indicator",
+      mode: "number+gauge+delta",
+      gauge: { shape: "bullet" },
+      delta: { reference: 100 },
+      value: 50,
+      domain: { x: [0, 1], y: [0, 1] },
+      title: { text: "Quality" }
+    }
+  ];
+
+  var layout = { width: 350, height: 80, paper_bgcolor: 'transparent', margin: { t: 10, b: 40, l: 120, r: 60 } };
+  Plotly.newPlot('chart1b', data, layout);
+
+  var data = [
+    {
+      type: "indicator",
+      mode: "number+gauge+delta",
+      gauge: { shape: "bullet" },
+      delta: { reference: 100 },
+      value: 50,
+      domain: { x: [0, 1], y: [0, 1] },
+      title: { text: "Efficiancy" }
+    }
+  ];
+
+  var layout = { width: 350, height: 80, paper_bgcolor: 'transparent', margin: { t: 10, b: 40, l: 120, r: 60 } };
+  Plotly.newPlot('chart2b', data, layout);
 };
 
 const findNextMon = () => {
@@ -75,32 +188,14 @@ const findPrevMon = () => {
   }, 1000);
 };
 
-const init = (d) => {
+const init = (dateTimes) => {
 
-  const username = localStorage.getItem("username");
+  
   // localStorage.clear();
 
   document.getElementById("username").innerText = `Welcome ${username}`;
 
-  let monday = new Date(d.getDay != 1 ? d - (d.getDay() - 1) * 86400000 : d).toDateString().split(' ').join('');
-  let tuesday = new Date(d.getDay != 1 ? d - (d.getDay() - 2) * 86400000 : d).toDateString().split(' ').join('');
-  let wednesday = new Date(d.getDay != 1 ? d - (d.getDay() - 3) * 86400000 : d).toDateString().split(' ').join('');
-  let thursday = new Date(d.getDay != 1 ? d - (d.getDay() - 4) * 86400000 : d).toDateString().split(' ').join('');
-  let friday = new Date(d.getDay != 1 ? d - (d.getDay() - 5) * 86400000 : d).toDateString().split(' ').join('');
-
-  const handleStorage = async () => {
-
-    await fetch('/api/data', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ username })
-    }).then(res => res.json()).then(data => {
-      user = data;
-    });
-
-    let dateTimes = user.tasks.map(obj => obj.date);
+  handleStorage();
 
     if (dateTimes) {
       dateTimes.forEach(dayTime => {
@@ -122,99 +217,10 @@ const init = (d) => {
       });
     }
 
-    let totalDone = 0;
-    let totalHours = 45;
-    let totalScheduled = 0;
+    console.log('dateTimes: ', dateTimes);
+    
 
-    weekdays.forEach((day, i) => {
-        dateTimes.forEach(dayTime => {
-          if (dayTime.includes(day)) {
-            totalScheduled += 1;
-
-            if (user.tasks.find(obj => obj.date == dayTime).status == "done") {
-              totalDone += 1
-            };
-          };
-        });
-    });
-
-    var data = [
-      {
-        domain: { x: [0, 1], y: [0, 1] },
-        value: totalScheduled / totalHours * 100,
-        title: { text: "Quality" },
-        type: "indicator",
-        mode: "gauge+number",
-        delta: { reference: 400 },
-        gauge: {
-          axis: { range: [0, 100] },
-          bar: { color: "red" },
-          steps: [
-            { range: [0, 50], color: "black" },
-            { range: [51, 74], color: "yellow" },
-            { range: [75, 100], color: "green" }
-          ]
-        }
-      }
-    ];
-
-    var layout = { width: 300, height: 250, paper_bgcolor: 'transparent' };
-    Plotly.newPlot('chart1', data, layout);
-
-    var data2 = [
-      {
-        domain: { x: [0, 1], y: [0, 1] },
-        value: totalDone / (totalScheduled == 0 ? 45 : totalScheduled) * 100,
-        title: { text: "Efficiency" },
-        type: "indicator",
-        mode: "gauge+number",
-        delta: { reference: 400 },
-        gauge: {
-          axis: { range: [0, 100] },
-          bar: { color: "red" },
-          steps: [
-            { range: [0, 50], color: "black" },
-            { range: [51, 74], color: "yellow" },
-            { range: [75, 100], color: "green" }
-          ]
-        }
-      }
-    ];
-
-    var layout2 = { width: 300, height: 250, paper_bgcolor: 'transparent' };
-    Plotly.newPlot('chart2', data2, layout2);
-
-    var data = [
-      {
-        type: "indicator",
-        mode: "number+gauge+delta",
-        gauge: { shape: "bullet" },
-        delta: { reference: 100 },
-        value: 50,
-        domain: { x: [0, 1], y: [0, 1] },
-        title: { text: "Quality" }
-      }
-    ];
-
-    var layout = { width: 350, height: 80, paper_bgcolor: 'transparent', margin: { t: 10, b: 40, l: 120, r: 60 } };
-    Plotly.newPlot('chart1b', data, layout);
-
-
-
-    var data = [
-      {
-        type: "indicator",
-        mode: "number+gauge+delta",
-        gauge: { shape: "bullet" },
-        delta: { reference: 100 },
-        value: 50,
-        domain: { x: [0, 1], y: [0, 1] },
-        title: { text: "Efficiancy" }
-      }
-    ];
-
-    var layout = { width: 350, height: 80, paper_bgcolor: 'transparent', margin: { t: 10, b: 40, l: 120, r: 60 } };
-    Plotly.newPlot('chart2b', data, layout);
+    // gaugeFx(dateTimes);
 
   };
 
@@ -222,6 +228,12 @@ const init = (d) => {
 
   currentDay.innerText = `${d.toDateString()}, ${d.toLocaleTimeString()}`;
   currentDay2.innerText = `${d.toDateString()}, ${d.toLocaleTimeString()}`;
+
+  let monday = new Date(d.getDay != 1 ? d - (d.getDay() - 1) * 86400000 : d).toDateString().split(' ').join('');
+  let tuesday = new Date(d.getDay != 1 ? d - (d.getDay() - 2) * 86400000 : d).toDateString().split(' ').join('');
+  let wednesday = new Date(d.getDay != 1 ? d - (d.getDay() - 3) * 86400000 : d).toDateString().split(' ').join('');
+  let thursday = new Date(d.getDay != 1 ? d - (d.getDay() - 4) * 86400000 : d).toDateString().split(' ').join('');
+  let friday = new Date(d.getDay != 1 ? d - (d.getDay() - 5) * 86400000 : d).toDateString().split(' ').join('');
 
   const weekdays = [monday, tuesday, wednesday, thursday, friday];
   const hours = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
@@ -272,7 +284,6 @@ const init = (d) => {
         `
     });
   });
-};
 
 const nextWk = document.getElementById('nextWeek');
 const prevWk = document.getElementById('prevWeek');
@@ -291,5 +302,5 @@ today.onclick = () => {
   showToday();
 }
 
-init(d);
-showToday();
+init(dateTimes);
+// showToday();
