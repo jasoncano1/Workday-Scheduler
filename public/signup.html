@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" href="./css/login.css" />  
-    <meta charset="UTF-8" />
-    <title>Login Page</title>
-    <!-- Add your CSS styling here -->
-  </head>
-  <body>
-    <h1 id="title">Workday Scheduler</h1>
-    <main id="main">
 
+<head>
+  <link rel="stylesheet" href="./css/login.css" />
+  <meta charset="UTF-8" />
+  <title>Login Page</title>
+  <!-- Add your CSS styling here -->
+</head>
+
+<body>
+  <header>
+    <h1 id="title">Time Manager</h1>
+    <p>Optimize your time with our intuitive scheduler app designed to enhance productivity and efficiency. Effortlessly
+      track your progress through real-time monitoring gauges, and gain valuable insights with detailed time analysis
+      reports, enabling you to make smarter decisions and achieve more each day.</p>
+  </header>
+
+  <main id="main">
     <h1>Signup</h1>
     <!-- Form sends a POST request to /login -->
     <form>
@@ -22,7 +29,7 @@
       <label for="password">Confirm:</label>
       <input type="password" name="confirmPW" id="confirmPW" required />
       <br /><br />
-      <button id="signupBtn" >SUBMIT</button>
+      <button id="signupBtn">SUBMIT</button>
     </form>
     <p>
       If you have an account and would like to save in the cloud <a href="/">Login here</a>.
@@ -32,7 +39,7 @@
     </p>
   </main>
 
-    <script src="js/signup.js"></script>
+  <script src="js/signup.js"></script>
 </body>
 
 </html>

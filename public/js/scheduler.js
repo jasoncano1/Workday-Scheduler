@@ -24,6 +24,13 @@ const h24 = 60 * 60 * 24 * 1000;
 const main = document.getElementById('main');
 const nextWk = document.getElementById('nextWeek');
 const prevWk = document.getElementById('prevWeek');
-
 const init = (d) => {
+  localStorage.getItem("username")
+    ? (
+      username = localStorage.getItem('username'),
+      document.getElementById('username').innerHTML = `Hi ${username}, welcome to your time analysis.`,
+      document.getElementById('username').style.fontWeight = 'normal'
+    )
+    : (window.location.href = "/");
 };
+init(d);
