@@ -474,16 +474,6 @@
         "status": "pending"
       },
       {
-        "date": "MonMar172025_9AM",
-        "task": "Coding Development",
-        "status": "pending"
-      },
-      {
-        "date": "MonMar172025_10AM",
-        "task": "Coding Development",
-        "status": "pending"
-      },
-      {
         "date": "TueMar182025_9AM",
         "task": "Coding Development",
         "status": "pending"
@@ -549,21 +539,6 @@
         "status": "pending"
       },
       {
-        "date": "MonMar172025_11AM",
-        "task": "Lunch",
-        "status": "pending"
-      },
-      {
-        "date": "MonMar172025_12PM",
-        "task": "Work on My Office",
-        "status": "pending"
-      },
-      {
-        "date": "MonMar172025_1PM",
-        "task": "Work on My Office",
-        "status": "pending"
-      },
-      {
         "date": "TueMar182025_1PM",
         "task": "Socialize and Drive",
         "status": "pending"
@@ -597,6 +572,51 @@
         "date": "FriMar212025_12PM",
         "task": "Work on table",
         "status": "pending"
+      },
+      {
+        "date": "MonMar172025_9AM",
+        "task": "Coding Development",
+        "status": "done"
+      },
+      {
+        "date": "MonMar172025_10AM",
+        "task": "Coding",
+        "status": "done"
+      },
+      {
+        "date": "MonMar172025_11AM",
+        "task": "Lunch",
+        "status": "done"
+      },
+      {
+        "date": "MonMar172025_12PM",
+        "task": "Work on My Office",
+        "status": "done"
+      },
+      {
+        "date": "MonMar172025_1PM",
+        "task": "Work on Work Station",
+        "status": "done"
+      },
+      {
+        "date": "MonMar172025_2PM",
+        "task": "Work on Work Station",
+        "status": "done"
+      },
+      {
+        "date": "MonMar172025_3PM",
+        "task": "Work on Work Station",
+        "status": "done"
+      },
+      {
+        "date": "MonMar172025_4PM",
+        "task": "Work on Work Bench",
+        "status": "done"
+      },
+      {
+        "date": "MonMar172025_5PM",
+        "task": "Work on Work Bench",
+        "status": "done"
       }
     ]
   }

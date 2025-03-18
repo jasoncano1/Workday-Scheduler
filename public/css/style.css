@@ -4,6 +4,10 @@ body {
   box-sizing: border-box;
 }
 
+#username {
+  font-size: 2rem;
+}
+
 #bodyDiv {
   overflow: hidden;
   min-width: 100%;
