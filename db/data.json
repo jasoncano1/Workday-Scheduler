@@ -484,11 +484,6 @@
         "status": "done"
       },
       {
-        "date": "WedMar192025_9AM",
-        "task": "Coding Development",
-        "status": "pending"
-      },
-      {
         "date": "ThuMar202025_9AM",
         "task": "Coding Development",
         "status": "pending"
@@ -519,11 +514,6 @@
         "status": "pending"
       },
       {
-        "date": "WedMar192025_11AM",
-        "task": "Lunch",
-        "status": "pending"
-      },
-      {
         "date": "MonMar172025_11AM",
         "task": "Lunch",
         "status": "done"
@@ -539,14 +529,29 @@
         "status": "done"
       },
       {
-        "date": "WedMar192025_12PM",
-        "task": "Robotics Development",
-        "status": "pending"
+        "date": "MonMar172025_2PM",
+        "task": "Work on My Office",
+        "status": "done"
       },
       {
-        "date": "WedMar192025_1PM",
-        "task": "Robotics Development",
-        "status": "pending"
+        "date": "MonMar172025_3PM",
+        "task": "Work on Work Satation",
+        "status": "done"
+      },
+      {
+        "date": "MonMar172025_4PM",
+        "task": "Work on Work Satation",
+        "status": "done"
+      },
+      {
+        "date": "MonMar172025_5PM",
+        "task": "Work on Work Satation",
+        "status": "done"
+      },
+      {
+        "date": "MonMar172025_1PM",
+        "task": "Work on My Office",
+        "status": "done"
       },
       {
         "date": "ThuMar202025_1PM",
@@ -561,11 +566,6 @@
       {
         "date": "FriMar212025_12PM",
         "task": "Work on table",
-        "status": "pending"
-      },
-      {
-        "date": "WedMar192025_10AM",
-        "task": "Call Las Vegas Trip",
         "status": "pending"
       },
       {
@@ -611,6 +611,51 @@
       {
         "date": "TueMar182025_4PM",
         "task": "Driving to Pick up HEB",
+        "status": "done"
+      },
+      {
+        "date": "WedMar192025_9AM",
+        "task": "Coding Development",
+        "status": "done"
+      },
+      {
+        "date": "WedMar192025_10AM",
+        "task": "Call Las Vegas Trip",
+        "status": "done"
+      },
+      {
+        "date": "WedMar192025_5PM",
+        "task": "Robotics Development",
+        "status": "pending"
+      },
+      {
+        "date": "WedMar192025_3PM",
+        "task": "Work on Workstation",
+        "status": "pending"
+      },
+      {
+        "date": "WedMar192025_4PM",
+        "task": "Work on Workstation",
+        "status": "pending"
+      },
+      {
+        "date": "WedMar192025_11AM",
+        "task": "Lunch",
+        "status": "done"
+      },
+      {
+        "date": "WedMar192025_12PM",
+        "task": "Work on Computer Stand",
+        "status": "done"
+      },
+      {
+        "date": "WedMar192025_1PM",
+        "task": "Work on Computer Stand",
+        "status": "done"
+      },
+      {
+        "date": "WedMar192025_2PM",
+        "task": "Work on Computer stand",
         "status": "done"
       }
     ]
