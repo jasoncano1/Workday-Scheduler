@@ -476,25 +476,15 @@
       {
         "date": "MonMar172025_9AM",
         "task": "Coding Development",
-        "status": "pending"
+        "status": "done"
       },
       {
         "date": "MonMar172025_10AM",
         "task": "Coding Development",
-        "status": "pending"
-      },
-      {
-        "date": "TueMar182025_9AM",
-        "task": "Coding Development",
-        "status": "pending"
+        "status": "done"
       },
       {
         "date": "WedMar192025_9AM",
-        "task": "Coding Development",
-        "status": "pending"
-      },
-      {
-        "date": "WedMar192025_10AM",
         "task": "Coding Development",
         "status": "pending"
       },
@@ -509,11 +499,6 @@
         "status": "pending"
       },
       {
-        "date": "TueMar182025_10AM",
-        "task": "Lunch",
-        "status": "pending"
-      },
-      {
         "date": "ThuMar202025_10AM",
         "task": "Lunch",
         "status": "pending"
@@ -524,18 +509,8 @@
         "status": "pending"
       },
       {
-        "date": "TueMar182025_11AM",
-        "task": "Prepare for Meeting",
-        "status": "pending"
-      },
-      {
         "date": "ThuMar202025_11AM",
         "task": "Prepare for Meeting",
-        "status": "pending"
-      },
-      {
-        "date": "TueMar182025_12PM",
-        "task": "Meeting - Northland",
         "status": "pending"
       },
       {
@@ -551,27 +526,17 @@
       {
         "date": "MonMar172025_11AM",
         "task": "Lunch",
-        "status": "pending"
+        "status": "done"
       },
       {
         "date": "MonMar172025_12PM",
         "task": "Work on My Office",
-        "status": "pending"
+        "status": "done"
       },
       {
         "date": "MonMar172025_1PM",
         "task": "Work on My Office",
-        "status": "pending"
-      },
-      {
-        "date": "TueMar182025_1PM",
-        "task": "Socialize and Drive",
-        "status": "pending"
-      },
-      {
-        "date": "TueMar182025_3PM",
-        "task": "Pick up Groceries",
-        "status": "pending"
+        "status": "done"
       },
       {
         "date": "WedMar192025_12PM",
@@ -597,6 +562,56 @@
         "date": "FriMar212025_12PM",
         "task": "Work on table",
         "status": "pending"
+      },
+      {
+        "date": "WedMar192025_10AM",
+        "task": "Call Las Vegas Trip",
+        "status": "pending"
+      },
+      {
+        "date": "TueMar182025_9AM",
+        "task": "Coding Development",
+        "status": "done"
+      },
+      {
+        "date": "TueMar182025_10AM",
+        "task": "Lunch",
+        "status": "done"
+      },
+      {
+        "date": "TueMar182025_11AM",
+        "task": "Prepare for Tax Office",
+        "status": "done"
+      },
+      {
+        "date": "TueMar182025_12PM",
+        "task": "Tax Office",
+        "status": "done"
+      },
+      {
+        "date": "TueMar182025_1PM",
+        "task": "Tax Office",
+        "status": "done"
+      },
+      {
+        "date": "TueMar182025_2PM",
+        "task": "Tax Office",
+        "status": "done"
+      },
+      {
+        "date": "TueMar182025_3PM",
+        "task": "Autozone & Goodwill",
+        "status": "done"
+      },
+      {
+        "date": "TueMar182025_5PM",
+        "task": "HEB Curbside & Home",
+        "status": "done"
+      },
+      {
+        "date": "TueMar182025_4PM",
+        "task": "Driving to Pick up HEB",
+        "status": "done"
       }
     ]
   }
