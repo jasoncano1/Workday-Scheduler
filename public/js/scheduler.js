@@ -27,33 +27,14 @@ const prevWk = document.getElementById('prevWeek');
 const hours = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
 
 const getUser = async username => await (await fetch('/api/data', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ username })
-  })).json();
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ username })
+})).json();
 
-const init = async d => {
-  localStorage.getItem("username")
-    ? (
-      username = localStorage.getItem('username'),
-      document.getElementById('username').innerHTML = `Welcome ${username}`,
-      document.getElementById('username').style.fontWeight = 'normal'
-    )
-    : (window.location.href = "/");
-
-  user = await getUser(username);
-  dateTimes = user.tasks.map(obj => obj.date);
-
-  monday = new Date(d.getDay != 1 ? d - (d.getDay() - 1) * 86400000 : d).toDateString().split(' ').join('');
-  tuesday = new Date(d.getDay != 1 ? d - (d.getDay() - 2) * 86400000 : d).toDateString().split(' ').join('');
-  wednesday = new Date(d.getDay != 1 ? d - (d.getDay() - 3) * 86400000 : d).toDateString().split(' ').join('');
-  thursday = new Date(d.getDay != 1 ? d - (d.getDay() - 4) * 86400000 : d).toDateString().split(' ').join('');
-  friday = new Date(d.getDay != 1 ? d - (d.getDay() - 5) * 86400000 : d).toDateString().split(' ').join('');
-
-  weekdays = [monday, tuesday, wednesday, thursday, friday];
-
+const populateWk = weekdays => {
   weekdays.forEach((date, i) => {
 
     dateTimes.forEach(dayTime => {
@@ -67,47 +48,50 @@ const init = async d => {
     });
 
     main.innerHTML += `
-      <section id=${date} class=${new Date() - d > 86400000 ? "past" :
+    <section id=${date} class=${new Date() - d > 86400000 ? "past" :
         new Date() - d < -86400000 ? "future" :
           i + 1 < d.getDay() ? "past" :
             i + 1 == d.getDay() ? "present" : "future"
       }>
-        
-        <h5>${i == 0 ? 'Monday' :
+      
+      <h5>${i == 0 ? 'Monday' :
         i == 1 ? 'Tuesday' :
           i == 2 ? 'Wednesday' :
             i == 3 ? 'Thursday' : 'Friday'
       }</h5>
-      </section>`;
+    </section>`;
 
     let div = document.getElementById(date);
     hours.forEach(hour => {
       div.innerHTML +=
         div.classList.contains("past") ?
           `
-        <div>
-        <h5>${hour}</h5>
-        <input class="_${hour}" disabled />
-        <input class="_${hour}" disabled type="checkbox" />
-        </div>
-        ` :
+      <div>
+      <h5>${hour}</h5>
+      <input class="_${hour}" disabled />
+      <input class="_${hour}" disabled type="checkbox" />
+      </div>
+      ` :
           div.classList.contains("future") ?
             `
-            <div>
-              <h5>${hour}</h5>
-              <input class="_${hour}" onChange="handleChange('${date}_${hour}')" />
-              <input class="_${hour}" disabled type="checkbox" />
-            </div>
-          `:
+          <div>
+            <h5>${hour}</h5>
+            <input class="_${hour}" onChange="handleChange('${date}_${hour}')" />
+            <input class="_${hour}" disabled type="checkbox" />
+          </div>
+        `:
             `
-            <div>
-              <h5>${hour}</h5>
-              <input class="_${hour}" onChange="handleChange('${date}_${hour}')" />
-              <input class="_${hour}" onChange="handleChange('${date}_${hour}')" type="checkbox" />
-            </div>
-          `
+          <div>
+            <h5>${hour}</h5>
+            <input class="_${hour}" onChange="handleChange('${date}_${hour}')" />
+            <input class="_${hour}" onChange="handleChange('${date}_${hour}')" type="checkbox" />
+          </div>
+        `
     });
   });
+};
+
+const renderGauges = (totalDone, totalScheduled, totalHours) => {
 
   data = [
     {
@@ -170,8 +154,6 @@ const init = async d => {
   layout = { width: 350, height: 80, paper_bgcolor: 'transparent', margin: { t: 10, b: 40, l: 120, r: 60 } };
   Plotly.newPlot('chart1b', data, layout);
 
-
-
   data2 = [
     {
       type: "indicator",
@@ -187,4 +169,30 @@ const init = async d => {
   layout = { width: 350, height: 80, paper_bgcolor: 'transparent', margin: { t: 10, b: 40, l: 120, r: 60 } };
   Plotly.newPlot('chart2b', data2, layout);
 };
+
+const getWkDays = d => {
+  monday = new Date(d.getDay != 1 ? d - (d.getDay() - 1) * 86400000 : d).toDateString().split(' ').join('');
+  tuesday = new Date(d.getDay != 1 ? d - (d.getDay() - 2) * 86400000 : d).toDateString().split(' ').join('');
+  wednesday = new Date(d.getDay != 1 ? d - (d.getDay() - 3) * 86400000 : d).toDateString().split(' ').join('');
+  thursday = new Date(d.getDay != 1 ? d - (d.getDay() - 4) * 86400000 : d).toDateString().split(' ').join('');
+  friday = new Date(d.getDay != 1 ? d - (d.getDay() - 5) * 86400000 : d).toDateString().split(' ').join('');
+  return [monday, tuesday, wednesday, thursday, friday];
+};
+
+const init = async d => {
+  localStorage.getItem("username")
+    ? (
+      username = localStorage.getItem('username'),
+      document.getElementById('username').innerHTML = `Welcome ${username}`
+    )
+    : (window.location.href = "/");
+
+  user = await getUser(username);
+  dateTimes = user.tasks.map(obj => obj.date);
+
+  weekdays = getWkDays(d);
+  populateWk(weekdays);
+  renderGauges(totalDone, totalScheduled, totalHours);
+};
+
 init(d);
