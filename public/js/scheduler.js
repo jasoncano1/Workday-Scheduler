@@ -93,7 +93,8 @@ const populateWk = async d => {
   weekdays.forEach((date, i) => {
 
     dateTimes.forEach(dayTime => {
-      if (dayTime.includes(day)) {
+      
+      if (dayTime.includes(date)) {
         totalScheduled += 1;
 
         if (user.tasks.find(obj => obj.date == dayTime).status == "done") {
@@ -120,6 +121,7 @@ const populateWk = async d => {
     hours.forEach(hour => {
       let str = `${date}_${hour}`
       let task = user.tasks?.find(({date})=> date==str)?.task || '';
+      let status = user.tasks?.find(({date})=> date==str)?.status || '';
 
       div.innerHTML +=
         div.classList.contains("past") ?
@@ -127,7 +129,7 @@ const populateWk = async d => {
             <div>
               <h5>${hour}</h5>
               <input class="_${hour}" disabled value="${task}" />
-              <input class="_${hour}" disabled type="checkbox" />
+              <input class="_${hour}" disabled type="checkbox" ${status=="done"?"checked":""} />
             </div>
           ` :
           div.classList.contains("future") ?
@@ -135,16 +137,19 @@ const populateWk = async d => {
             <div>
               <h5>${hour}</h5>
               <input class="_${hour}" onChange="handleChange('${date}_${hour}')" value="${task}" />
-              <input class="_${hour}" disabled type="checkbox" />
+              <input class="_${hour}" disabled type="checkbox" ${status=="done"?"checked":""} />
             </div>
          `:
             `
             <div>
               <h5>${hour}</h5>
               <input class="_${hour}" onChange="handleChange('${date}_${hour}')" value="${task}" />
-              <input class="_${hour}" onChange="handleChange('${date}_${hour}')" type="checkbox" />
+              <input class="_${hour}" onChange="handleChange('${date}_${hour}')" type="checkbox" ${status=="done"?"checked":""} />
             </div>
           `;
+          status=="done" 
+            ? div.querySelector(`._${hour}`).style.textDecoration = "line-through" 
+            : div.querySelector(`._${hour}`).style.textDecoration = "none";
     });
   });
 };
@@ -192,7 +197,7 @@ const renderPreviousWeek = () => {
   }, 1000);
 };
 
-const renderGauges = (totalDone, totalScheduled, totalHours) => {
+const renderGauges = (totalDone, totalScheduled, totalHours) => {  
 
   data = [
     {
