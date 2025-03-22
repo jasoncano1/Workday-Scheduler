@@ -484,16 +484,6 @@
         "status": "done"
       },
       {
-        "date": "ThuMar202025_9AM",
-        "task": "Coding Development",
-        "status": "pending"
-      },
-      {
-        "date": "FriMar212025_9AM",
-        "task": "Coding Development",
-        "status": "pending"
-      },
-      {
         "date": "ThuMar202025_10AM",
         "task": "Lunch",
         "status": "pending"
@@ -501,16 +491,6 @@
       {
         "date": "FriMar212025_10AM",
         "task": "Lunch",
-        "status": "pending"
-      },
-      {
-        "date": "ThuMar202025_11AM",
-        "task": "Prepare for Meeting",
-        "status": "pending"
-      },
-      {
-        "date": "ThuMar202025_12PM",
-        "task": "Meeting - Northland",
         "status": "pending"
       },
       {
@@ -552,11 +532,6 @@
         "date": "MonMar172025_1PM",
         "task": "Work on My Office",
         "status": "done"
-      },
-      {
-        "date": "ThuMar202025_1PM",
-        "task": "Socialize and Drive",
-        "status": "pending"
       },
       {
         "date": "FriMar212025_11AM",
@@ -624,21 +599,6 @@
         "status": "done"
       },
       {
-        "date": "WedMar192025_5PM",
-        "task": "Robotics Development",
-        "status": "pending"
-      },
-      {
-        "date": "WedMar192025_3PM",
-        "task": "Work on Workstation",
-        "status": "pending"
-      },
-      {
-        "date": "WedMar192025_4PM",
-        "task": "Work on Workstation",
-        "status": "pending"
-      },
-      {
         "date": "WedMar192025_11AM",
         "task": "Lunch",
         "status": "done"
@@ -657,6 +617,91 @@
         "date": "WedMar192025_2PM",
         "task": "Work on Computer stand",
         "status": "done"
+      },
+      {
+        "date": "WedMar192025_3PM",
+        "task": "Work on Workstation",
+        "status": "done"
+      },
+      {
+        "date": "WedMar192025_4PM",
+        "task": "Work on Workstation",
+        "status": "done"
+      },
+      {
+        "date": "WedMar192025_5PM",
+        "task": "Robotics Development",
+        "status": "done"
+      },
+      {
+        "date": "ThuMar202025_9AM",
+        "task": "Slept Due to Horrible night",
+        "status": "done"
+      },
+      {
+        "date": "ThuMar202025_11AM",
+        "task": "Prepare Finished Workstation",
+        "status": "done"
+      },
+      {
+        "date": "ThuMar202025_12PM",
+        "task": "Prepare Finished Workstation",
+        "status": "done"
+      },
+      {
+        "date": "ThuMar202025_1PM",
+        "task": "Make Calls",
+        "status": "done"
+      },
+      {
+        "date": "ThuMar202025_2PM",
+        "task": "Work on Office",
+        "status": "done"
+      },
+      {
+        "date": "ThuMar202025_3PM",
+        "task": "Work on Office",
+        "status": "done"
+      },
+      {
+        "date": "ThuMar202025_4PM",
+        "task": "Work on Work Table",
+        "status": "done"
+      },
+      {
+        "date": "ThuMar202025_5PM",
+        "task": "Work on Work Table",
+        "status": "done"
+      },
+      {
+        "date": "FriMar212025_1PM",
+        "task": "Work on Table",
+        "status": "done"
+      },
+      {
+        "date": "FriMar212025_9AM",
+        "task": "Slept",
+        "status": "done"
+      },
+      {
+        "date": "FriMar212025_2PM",
+        "task": "Work on Workstation",
+        "status": "done"
+      },
+      {
+        "date": "FriMar212025_3PM",
+        "task": "Work on Workstation",
+        "status": "done"
+      },
+      {
+        "date": "FriMar212025_4PM",
+        "task": "Work on Workstation",
+        "status": "done"
+      },
+      {
+        "date": "FriMar212025_5PM",
+        "task": "Work on Workstation",
+        "status": "`done"
       }
     ]
   }
