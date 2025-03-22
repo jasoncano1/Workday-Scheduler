@@ -1,6 +1,4 @@
 let day;
-let now;
-let newD;
 let user;
 let hour;
 let data;
@@ -15,26 +13,83 @@ let thursday;
 let checkbox;
 let username;
 let wednesday;
-let nextMonday;
 let totalDone = 0;
 let d = new Date();
 let totalHours = 45;
 let totalScheduled = 0;
+let nextMonday = Date.now();
 const h24 = 60 * 60 * 24 * 1000;
 const main = document.getElementById('main');
 const nextWk = document.getElementById('nextWeek');
 const prevWk = document.getElementById('prevWeek');
 const hours = ["9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM"];
 
-const getUser = async username => await (await fetch('/api/data', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({ username })
-})).json();
+const getWkDays = d => {
+  monday = new Date(d.getDay != 1 ? d - (d.getDay() - 1) * 86400000 : d).toDateString().split(' ').join('');
+  tuesday = new Date(d.getDay != 1 ? d - (d.getDay() - 2) * 86400000 : d).toDateString().split(' ').join('');
+  wednesday = new Date(d.getDay != 1 ? d - (d.getDay() - 3) * 86400000 : d).toDateString().split(' ').join('');
+  thursday = new Date(d.getDay != 1 ? d - (d.getDay() - 4) * 86400000 : d).toDateString().split(' ').join('');
+  friday = new Date(d.getDay != 1 ? d - (d.getDay() - 5) * 86400000 : d).toDateString().split(' ').join('');
+  return [monday, tuesday, wednesday, thursday, friday];
+};
 
-const populateWk = weekdays => {
+const init = async d => {
+  localStorage.getItem("username")
+    ? (
+      username = localStorage.getItem('username'),
+      document.getElementById('username').innerHTML = `Welcome ${username}`
+    )
+    : (window.location.href = "/");
+
+  populateWk(d);
+  renderGauges(totalDone, totalScheduled, totalHours);
+};
+
+const renderToday = () => {
+  d = new Date();
+  nextMonday = Date.now();
+
+  main.classList.toggle("slideRightOut", true);
+  setTimeout(() => {
+    main.innerHTML = "";
+    d = new Date(nextMonday);
+    init(d);
+  }, 500);
+  setTimeout(() => {
+    main.classList.toggle("slideRightOut", false);
+  }, 1000);
+
+  main.scrollTo({
+    left: document.querySelector('.present').getBoundingClientRect().x - main.getBoundingClientRect().x,
+    behavior: 'smooth'
+  });
+};
+
+const renderNextWeek = () => {
+  if (new Date(nextMonday).getDay() == 1) nextMonday = nextMonday + h24;
+
+  while (new Date(nextMonday).getDay() != 1) {
+    nextMonday = nextMonday + h24;
+  };
+
+  main.classList.toggle("slideLeftOut", true);
+  setTimeout(() => {
+    main.innerHTML = "";
+    d = new Date(nextMonday);
+    init(d);
+  }, 500);
+  setTimeout(() => {
+    main.classList.toggle("slideLeftOut", false);
+  }, 1000);
+};
+
+const populateWk = async d => {
+  weekdays = getWkDays(d);
+  user = await getUser(username);
+  dateTimes = user.tasks.map(obj => obj.date);
+
+  main.innerHTML = '';
+
   weekdays.forEach((date, i) => {
 
     dateTimes.forEach(dayTime => {
@@ -54,41 +109,87 @@ const populateWk = weekdays => {
             i + 1 == d.getDay() ? "present" : "future"
       }>
       
-      <h5>${i == 0 ? 'Monday' :
-        i == 1 ? 'Tuesday' :
-          i == 2 ? 'Wednesday' :
-            i == 3 ? 'Thursday' : 'Friday'
+      <h5>${i == 0 ? `Monday<br>${date.slice(3, 6)} ${date.slice(6, 8)}` :
+        i == 1 ? `Tuesday<br>${date.slice(3, 6)} ${date.slice(6, 8)}` :
+          i == 2 ? `Wednesday<br>${date.slice(3, 6)} ${date.slice(6, 8)}` :
+            i == 3 ? `Thursday<br>${date.slice(3, 6)} ${date.slice(6, 8)}` : `Friday<br>${date.slice(3, 6)} ${date.slice(6, 8)}`
       }</h5>
     </section>`;
 
     let div = document.getElementById(date);
     hours.forEach(hour => {
+      let str = `${date}_${hour}`
+      let task = user.tasks?.find(({date})=> date==str)?.task || '';
+
       div.innerHTML +=
         div.classList.contains("past") ?
           `
-      <div>
-      <h5>${hour}</h5>
-      <input class="_${hour}" disabled />
-      <input class="_${hour}" disabled type="checkbox" />
-      </div>
-      ` :
+            <div>
+              <h5>${hour}</h5>
+              <input class="_${hour}" disabled value="${task}" />
+              <input class="_${hour}" disabled type="checkbox" />
+            </div>
+          ` :
           div.classList.contains("future") ?
             `
-          <div>
-            <h5>${hour}</h5>
-            <input class="_${hour}" onChange="handleChange('${date}_${hour}')" />
-            <input class="_${hour}" disabled type="checkbox" />
-          </div>
-        `:
+            <div>
+              <h5>${hour}</h5>
+              <input class="_${hour}" onChange="handleChange('${date}_${hour}')" value="${task}" />
+              <input class="_${hour}" disabled type="checkbox" />
+            </div>
+         `:
             `
-          <div>
-            <h5>${hour}</h5>
-            <input class="_${hour}" onChange="handleChange('${date}_${hour}')" />
-            <input class="_${hour}" onChange="handleChange('${date}_${hour}')" type="checkbox" />
-          </div>
-        `
+            <div>
+              <h5>${hour}</h5>
+              <input class="_${hour}" onChange="handleChange('${date}_${hour}')" value="${task}" />
+              <input class="_${hour}" onChange="handleChange('${date}_${hour}')" type="checkbox" />
+            </div>
+          `;
     });
   });
+};
+
+const handleChange = dayTime => {
+
+  let [d, h] = dayTime.split("_");
+  let day = document.getElementById(d);
+  let hour = day.querySelector(`._${h}`);
+  let checkbox = day.querySelector(`._${h}[type=checkbox]`);
+
+  checkbox.checked == false
+    ? (
+      hour.style.textDecoration = "none"
+    ) : (
+      hour.style.textDecoration = "line-through"
+    );
+
+  user.tasks = user.tasks.filter(obj => obj.date !== dayTime);
+  user.tasks.push({ date: dayTime, task: hour.value, status: checkbox.checked ? "done" : "pending" });
+
+  fetch('/api/data', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(user)
+  })
+};
+
+const renderPreviousWeek = () => {
+  nextMonday = nextMonday - 7 * h24;
+  while (new Date(nextMonday).getDay() != 1) {
+    nextMonday = nextMonday - h24
+  };
+
+  main.classList.toggle("slideRightOut", true);
+  setTimeout(() => {
+    main.innerHTML = "";
+    d = new Date(nextMonday);
+    init(d);
+  }, 500);
+  setTimeout(() => {
+    main.classList.toggle("slideRightOut", false);
+  }, 1000);
 };
 
 const renderGauges = (totalDone, totalScheduled, totalHours) => {
@@ -170,29 +271,15 @@ const renderGauges = (totalDone, totalScheduled, totalHours) => {
   Plotly.newPlot('chart2b', data2, layout);
 };
 
-const getWkDays = d => {
-  monday = new Date(d.getDay != 1 ? d - (d.getDay() - 1) * 86400000 : d).toDateString().split(' ').join('');
-  tuesday = new Date(d.getDay != 1 ? d - (d.getDay() - 2) * 86400000 : d).toDateString().split(' ').join('');
-  wednesday = new Date(d.getDay != 1 ? d - (d.getDay() - 3) * 86400000 : d).toDateString().split(' ').join('');
-  thursday = new Date(d.getDay != 1 ? d - (d.getDay() - 4) * 86400000 : d).toDateString().split(' ').join('');
-  friday = new Date(d.getDay != 1 ? d - (d.getDay() - 5) * 86400000 : d).toDateString().split(' ').join('');
-  return [monday, tuesday, wednesday, thursday, friday];
-};
-
-const init = async d => {
-  localStorage.getItem("username")
-    ? (
-      username = localStorage.getItem('username'),
-      document.getElementById('username').innerHTML = `Welcome ${username}`
-    )
-    : (window.location.href = "/");
-
-  user = await getUser(username);
-  dateTimes = user.tasks.map(obj => obj.date);
-
-  weekdays = getWkDays(d);
-  populateWk(weekdays);
-  renderGauges(totalDone, totalScheduled, totalHours);
-};
+const getUser = async username => await (await fetch('/api/data', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ username })
+})).json();
 
 init(d);
+today.onclick = renderToday;
+nextWk.onclick = () => renderNextWeek(nextMonday);
+prevWk.onclick = () => renderPreviousWeek(nextMonday);
