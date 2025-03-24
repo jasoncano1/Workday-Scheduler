@@ -4,13 +4,17 @@ body {
   box-sizing: border-box;
 }
 
+#username {
+  font-size: 2rem;
+}
+
 #bodyDiv {
   overflow: hidden;
   min-width: 100%;
   min-height: 100vh;
   position: relative;
   font-family: 'Open Sans', sans-serif;
-  background-image: url(../images/BG.png);
+  background-image: url(../images/bg2.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -51,7 +55,7 @@ header a {
 }
 
 .title {
-  width: 400px;
+  width: 430px;
   text-align: center;
 }
 

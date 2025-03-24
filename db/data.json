@@ -486,12 +486,12 @@
       {
         "date": "ThuMar202025_10AM",
         "task": "Lunch",
-        "status": "pending"
+        "status": "done"
       },
       {
         "date": "FriMar212025_10AM",
         "task": "Lunch",
-        "status": "pending"
+        "status": "done"
       },
       {
         "date": "MonMar172025_11AM",
@@ -529,19 +529,14 @@
         "status": "done"
       },
       {
-        "date": "MonMar172025_1PM",
-        "task": "Work on My Office",
-        "status": "done"
-      },
-      {
         "date": "FriMar212025_11AM",
         "task": "Work on Table",
-        "status": "pending"
+        "status": "done"
       },
       {
         "date": "FriMar212025_12PM",
         "task": "Work on table",
-        "status": "pending"
+        "status": "done"
       },
       {
         "date": "TueMar182025_9AM",
@@ -701,7 +696,32 @@
       {
         "date": "FriMar212025_5PM",
         "task": "Work on Workstation",
-        "status": "`done"
+        "status": "done"
+      },
+      {
+        "date": "MonMar242025_11AM",
+        "task": "lunch",
+        "status": "pending"
+      },
+      {
+        "date": "TueMar252025_9AM",
+        "task": "Coding Development",
+        "status": "pending"
+      },
+      {
+        "date": "WedMar262025_9AM",
+        "task": "Coding Development",
+        "status": "pending"
+      },
+      {
+        "date": "MonMar242025_9AM",
+        "task": "Coding Development",
+        "status": "done"
+      },
+      {
+        "date": "MonMar242025_10AM",
+        "task": "Coding Development",
+        "status": "done"
       }
     ]
   }
