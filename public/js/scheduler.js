@@ -41,8 +41,8 @@ const init = async d => {
     )
     : (window.location.href = "/");
 
-  populateWk(d);
-  renderGauges(totalDone, totalScheduled, totalHours);
+  await populateWk(d);
+  renderGauges();
 };
 
 const renderToday = () => {
@@ -88,6 +88,8 @@ const populateWk = async d => {
   user = await getUser(username);
   dateTimes = user.tasks.map(obj => obj.date);
 
+  totalDone = 0;
+  totalScheduled = 0;
   main.innerHTML = '';
 
   weekdays.forEach((date, i) => {
@@ -197,7 +199,10 @@ const renderPreviousWeek = () => {
   }, 1000);
 };
 
-const renderGauges = (totalDone, totalScheduled, totalHours) => {  
+const renderGauges = () => {  
+
+  console.log("test: ",totalDone, totalScheduled, totalHours);
+  
 
   data = [
     {
