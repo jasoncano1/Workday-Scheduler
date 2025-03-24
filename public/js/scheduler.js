@@ -85,7 +85,7 @@ const renderNextWeek = () => {
 
 const populateWk = async d => {
   weekdays = getWkDays(d);
-  user = await getUser(username);
+  user = user || await getUser(username);
   dateTimes = user.tasks.map(obj => obj.date);
 
   totalDone = 0;
@@ -156,10 +156,10 @@ const populateWk = async d => {
   });
 };
 
-const handleChange = dayTime => {
+const handleChange = async dayTime => {
 
-  let [d, h] = dayTime.split("_");
-  let day = document.getElementById(d);
+  let [b, h] = dayTime.split("_");
+  let day = document.getElementById(b);
   let hour = day.querySelector(`._${h}`);
   let checkbox = day.querySelector(`._${h}[type=checkbox]`);
 
@@ -172,14 +172,17 @@ const handleChange = dayTime => {
 
   user.tasks = user.tasks.filter(obj => obj.date !== dayTime);
   user.tasks.push({ date: dayTime, task: hour.value, status: checkbox.checked ? "done" : "pending" });
+  user.tasks = user.tasks.filter(obj => obj.task !== "");
 
-  fetch('/api/data', {
+  await fetch('/api/data', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(user)
-  })
+  });
+
+  init(d);
 };
 
 const renderPreviousWeek = () => {
@@ -281,7 +284,7 @@ const renderGauges = () => {
   Plotly.newPlot('chart2b', data2, layout);
 };
 
-const getUser = async username => await (await fetch('/api/data', {
+  const getUser = async username => await (await fetch('/api/data', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json'
