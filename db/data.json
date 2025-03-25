@@ -704,11 +704,6 @@
         "status": "done"
       },
       {
-        "date": "TueMar252025_9AM",
-        "task": "Coding Development",
-        "status": "pending"
-      },
-      {
         "date": "WedMar262025_9AM",
         "task": "Coding Development",
         "status": "pending"
@@ -757,6 +752,106 @@
         "date": "MonMar242025_5PM",
         "task": "Work on Livingroom",
         "status": "done"
+      },
+      {
+        "date": "TueMar252025_9AM",
+        "task": "Coding Development",
+        "status": "done"
+      },
+      {
+        "date": "TueMar252025_12PM",
+        "task": "Meeting - Northland",
+        "status": "pending"
+      },
+      {
+        "date": "TueMar252025_10AM",
+        "task": "Coding",
+        "status": "done"
+      },
+      {
+        "date": "TueMar252025_1PM",
+        "task": "Socialize & HEB",
+        "status": "pending"
+      },
+      {
+        "date": "TueMar252025_2PM",
+        "task": "Autozone & Drive Home",
+        "status": "pending"
+      },
+      {
+        "date": "TueMar252025_3PM",
+        "task": "Work on Jeep",
+        "status": "pending"
+      },
+      {
+        "date": "TueMar252025_4PM",
+        "task": "Work on Jeep",
+        "status": "pending"
+      },
+      {
+        "date": "TueMar252025_5PM",
+        "task": "Work on Computer Station",
+        "status": "pending"
+      },
+      {
+        "date": "WedMar262025_10AM",
+        "task": "Coding Development",
+        "status": "pending"
+      },
+      {
+        "date": "WedMar262025_11AM",
+        "task": "Lunch",
+        "status": "pending"
+      },
+      {
+        "date": "TueMar252025_11AM",
+        "task": "Lunch & Get Ready for Meeting",
+        "status": "pending"
+      },
+      {
+        "date": "FriMar282025_9AM",
+        "task": "Get Ready for Surgery",
+        "status": "pending"
+      },
+      {
+        "date": "FriMar282025_10AM",
+        "task": "Get Ready for Surgery",
+        "status": "pending"
+      },
+      {
+        "date": "FriMar282025_11AM",
+        "task": "Head to Surgery Center",
+        "status": "pending"
+      },
+      {
+        "date": "FriMar282025_12PM",
+        "task": "Surgery Prep",
+        "status": "pending"
+      },
+      {
+        "date": "FriMar282025_1PM",
+        "task": "Surgery Prep",
+        "status": "pending"
+      },
+      {
+        "date": "FriMar282025_2PM",
+        "task": "Surgery - Pain Pump",
+        "status": "pending"
+      },
+      {
+        "date": "FriMar282025_3PM",
+        "task": "Surgery Pain Pump",
+        "status": "pending"
+      },
+      {
+        "date": "FriMar282025_4PM",
+        "task": "Recovery",
+        "status": "pending"
+      },
+      {
+        "date": "FriMar282025_5PM",
+        "task": "Head to Mom's",
+        "status": "pending"
       }
     ]
   }
