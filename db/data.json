@@ -724,7 +724,7 @@
         "status": "done"
       },
       {
-        "date": "MonMar242025_12AM",
+        "date": "MonMar242025_12PM",
         "task": "Work on Computer Stand",
         "status": "done"
       },
@@ -759,39 +759,9 @@
         "status": "done"
       },
       {
-        "date": "TueMar252025_12PM",
-        "task": "Meeting - Northland",
-        "status": "pending"
-      },
-      {
         "date": "TueMar252025_10AM",
         "task": "Coding",
         "status": "done"
-      },
-      {
-        "date": "TueMar252025_1PM",
-        "task": "Socialize & HEB",
-        "status": "pending"
-      },
-      {
-        "date": "TueMar252025_2PM",
-        "task": "Autozone & Drive Home",
-        "status": "pending"
-      },
-      {
-        "date": "TueMar252025_3PM",
-        "task": "Work on Jeep",
-        "status": "pending"
-      },
-      {
-        "date": "TueMar252025_4PM",
-        "task": "Work on Jeep",
-        "status": "pending"
-      },
-      {
-        "date": "TueMar252025_5PM",
-        "task": "Work on Computer Station",
-        "status": "pending"
       },
       {
         "date": "WedMar262025_10AM",
@@ -801,11 +771,6 @@
       {
         "date": "WedMar262025_11AM",
         "task": "Lunch",
-        "status": "pending"
-      },
-      {
-        "date": "TueMar252025_11AM",
-        "task": "Lunch & Get Ready for Meeting",
         "status": "pending"
       },
       {
@@ -852,6 +817,46 @@
         "date": "FriMar282025_5PM",
         "task": "Head to Mom's",
         "status": "pending"
+      },
+      {
+        "date": "TueMar252025_11AM",
+        "task": "Lunch & Get Ready for Meeting",
+        "status": "done"
+      },
+      {
+        "date": "TueMar252025_12PM",
+        "task": "Meeting - Northland",
+        "status": "done"
+      },
+      {
+        "date": "TueMar252025_1PM",
+        "task": "Socialize & Drive",
+        "status": "done"
+      },
+      {
+        "date": "TueMar252025_2PM",
+        "task": "Goodwill & Walmart",
+        "status": "done"
+      },
+      {
+        "date": "TueMar252025_3PM",
+        "task": "Autozone for O2 Sensor",
+        "status": "done"
+      },
+      {
+        "date": "ThuMar272025_9AM",
+        "task": "Coding Development",
+        "status": "pending"
+      },
+      {
+        "date": "TueMar252025_4PM",
+        "task": "Relax Before Jeep O2",
+        "status": "done"
+      },
+      {
+        "date": "TueMar252025_5PM",
+        "task": "Call with Dr Chavda",
+        "status": "done"
       }
     ]
   }
