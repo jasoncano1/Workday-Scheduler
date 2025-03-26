@@ -19,7 +19,8 @@
   "homepage": "https://github.com/jasoncano1/Workday-Scheduler#readme",
   "dependencies": {
     "bcrypt": "^5.1.1",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "mysql2": "^3.14.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.9"

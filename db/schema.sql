@@ -3,10 +3,15 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   username VARCHAR(50) NOT NULL,
-  password VARCHAR(50) NOT NULL,
-  task VARCHAR(50),
-  date DATE NOT NULL,
-  status VARCHAR(50) NOT NULL
+  password VARCHAR(500) NOT NULL
 );
 
-SELECT * FROM users;
+DROP TABLE IF EXISTS tasks;
+
+CREATE TABLE tasks (
+  id SERIAL PRIMARY KEY,
+  user_id INT NOT NULL,
+  task VARCHAR(50),
+  date VARCHAR(50) NOT NULL,
+  status VARCHAR(50) NOT NULL
+);
