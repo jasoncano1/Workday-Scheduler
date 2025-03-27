@@ -1,20 +1,13 @@
 require('dotenv').config();
-const mysql = require('mysql2/promise');
+const { Pool } = require('pg');
 
-// Create the connection pool. The pool-specific settings are the defaults
-const pool = mysql.createPool({
-  host: 'localhost',
-  user: process.env.USER,
-  password: process.env.PASSWORD,
-  database: process.env.DATABASE,
-  port: process.env.PORT,
-  waitForConnections: true,
-  connectionLimit: 10,
-  maxIdle: 10, // max idle connections, the default value is the same as `connectionLimit`
-  idleTimeout: 60000, // idle connections timeout, in milliseconds, the default value 60000
-  queueLimit: 0,
-  enableKeepAlive: true,
-  keepAliveInitialDelay: 0,
+// Create a new pool instance with your PostgreSQL configuration.
+const pool = new Pool({
+  user: process.env.USER,           // Database user
+  host: 'localhost',          // Database host
+  database: process.env.DATABASE,         // Your database name
+  password: process.env.PASSWORD,   // Database password
+  port: 5432,                 // Database port
 });
 
 module.exports = pool;
