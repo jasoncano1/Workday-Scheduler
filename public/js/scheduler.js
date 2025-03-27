@@ -3,6 +3,7 @@ let user;
 let hour;
 let data;
 let data2;
+let tasks;
 let layout;
 let monday;
 let friday;
@@ -85,75 +86,78 @@ const renderNextWeek = () => {
 
 const populateWk = async d => {
   weekdays = getWkDays(d);
-  user = user || await getUser(username);
-  dateTimes = user.tasks.map(obj => obj.date);
+  tasks = tasks || await getUser(username);
+  dateTimes = tasks.map(obj => obj.date);
+
+  console.log("tasks: ", tasks, dateTimes);
+  
 
   totalDone = 0;
   totalScheduled = 0;
   main.innerHTML = '';
 
-  weekdays.forEach((date, i) => {
+  // weekdays.forEach((date, i) => {
 
-    dateTimes.forEach(dayTime => {
+  //   dateTimes.forEach(dayTime => {
       
-      if (dayTime.includes(date)) {
-        totalScheduled += 1;
+  //     if (dayTime.includes(date)) {
+  //       totalScheduled += 1;
 
-        if (user.tasks.find(obj => obj.date == dayTime).status == "done") {
-          totalDone += 1
-        };
-      };
-    });
+  //       if (user.tasks.find(obj => obj.date == dayTime).status == "done") {
+  //         totalDone += 1
+  //       };
+  //     };
+  //   });
 
-    main.innerHTML += `
-    <section id=${date} class=${new Date() - d > 86400000 ? "past" :
-        new Date() - d < -86400000 ? "future" :
-          i + 1 < d.getDay() ? "past" :
-            i + 1 == d.getDay() ? "present" : "future"
-      }>
+  //   main.innerHTML += `
+  //   <section id=${date} class=${new Date() - d > 86400000 ? "past" :
+  //       new Date() - d < -86400000 ? "future" :
+  //         i + 1 < d.getDay() ? "past" :
+  //           i + 1 == d.getDay() ? "present" : "future"
+  //     }>
       
-      <h5>${i == 0 ? `Monday<br>${date.slice(3, 6)} ${date.slice(6, 8)}` :
-        i == 1 ? `Tuesday<br>${date.slice(3, 6)} ${date.slice(6, 8)}` :
-          i == 2 ? `Wednesday<br>${date.slice(3, 6)} ${date.slice(6, 8)}` :
-            i == 3 ? `Thursday<br>${date.slice(3, 6)} ${date.slice(6, 8)}` : `Friday<br>${date.slice(3, 6)} ${date.slice(6, 8)}`
-      }</h5>
-    </section>`;
+  //     <h5>${i == 0 ? `Monday<br>${date.slice(3, 6)} ${date.slice(6, 8)}` :
+  //       i == 1 ? `Tuesday<br>${date.slice(3, 6)} ${date.slice(6, 8)}` :
+  //         i == 2 ? `Wednesday<br>${date.slice(3, 6)} ${date.slice(6, 8)}` :
+  //           i == 3 ? `Thursday<br>${date.slice(3, 6)} ${date.slice(6, 8)}` : `Friday<br>${date.slice(3, 6)} ${date.slice(6, 8)}`
+  //     }</h5>
+  //   </section>`;
 
-    let div = document.getElementById(date);
-    hours.forEach(hour => {
-      let str = `${date}_${hour}`
-      let task = user.tasks?.find(({date})=> date==str)?.task || '';
-      let status = user.tasks?.find(({date})=> date==str)?.status || '';
+  //   let div = document.getElementById(date);
+  //   hours.forEach(hour => {
+  //     let str = `${date}_${hour}`
+  //     let task = user.tasks?.find(({date})=> date==str)?.task || '';
+  //     let status = user.tasks?.find(({date})=> date==str)?.status || '';
 
-      div.innerHTML +=
-        div.classList.contains("past") ?
-          `
-            <div>
-              <h5>${hour}</h5>
-              <input class="_${hour}" disabled value="${task}" />
-              <input class="_${hour}" disabled type="checkbox" ${status=="done"?"checked":""} />
-            </div>
-          ` :
-          div.classList.contains("future") ?
-            `
-            <div>
-              <h5>${hour}</h5>
-              <input class="_${hour}" onChange="handleChange('${date}_${hour}')" value="${task}" />
-              <input class="_${hour}" disabled type="checkbox" ${status=="done"?"checked":""} />
-            </div>
-         `:
-            `
-            <div>
-              <h5>${hour}</h5>
-              <input class="_${hour}" onChange="handleChange('${date}_${hour}')" value="${task}" />
-              <input class="_${hour}" onChange="handleChange('${date}_${hour}')" type="checkbox" ${status=="done"?"checked":""} />
-            </div>
-          `;
-          status=="done" 
-            ? div.querySelector(`._${hour}`).style.textDecoration = "line-through" 
-            : div.querySelector(`._${hour}`).style.textDecoration = "none";
-    });
-  });
+  //     div.innerHTML +=
+  //       div.classList.contains("past") ?
+  //         `
+  //           <div>
+  //             <h5>${hour}</h5>
+  //             <input class="_${hour}" disabled value="${task}" />
+  //             <input class="_${hour}" disabled type="checkbox" ${status=="done"?"checked":""} />
+  //           </div>
+  //         ` :
+  //         div.classList.contains("future") ?
+  //           `
+  //           <div>
+  //             <h5>${hour}</h5>
+  //             <input class="_${hour}" onChange="handleChange('${date}_${hour}')" value="${task}" />
+  //             <input class="_${hour}" disabled type="checkbox" ${status=="done"?"checked":""} />
+  //           </div>
+  //        `:
+  //           `
+  //           <div>
+  //             <h5>${hour}</h5>
+  //             <input class="_${hour}" onChange="handleChange('${date}_${hour}')" value="${task}" />
+  //             <input class="_${hour}" onChange="handleChange('${date}_${hour}')" type="checkbox" ${status=="done"?"checked":""} />
+  //           </div>
+  //         `;
+  //         status=="done" 
+  //           ? div.querySelector(`._${hour}`).style.textDecoration = "line-through" 
+  //           : div.querySelector(`._${hour}`).style.textDecoration = "none";
+  //   });
+  // });
 };
 
 const handleChange = async dayTime => {

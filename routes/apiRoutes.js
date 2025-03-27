@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt'); // bcrypt for hashing passwords
 const path = require('path');
-const db = require('../db/data.json'); // Import the data from the JSON file
+// const db = require('../db/data.json'); // Import the data from the JSON file
+const pool = require('../db/connection'); // Import the connection pool
 const {writeFile} = require('fs');
 
 // Write the updated data to the JSON file
@@ -67,8 +68,29 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.post('/data', (req, res) => {
+router.post('/data', async (req, res) => {
+  let db = await pool.getConnection();
   const { username } = req.body;
+  db.query('SELECT id FROM users WHERE username = ?', [username], async (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).send('Error getting data.');
+    }
+    if (result.length === 0) {
+      return res.status(404).send('User not found.');
+    }
+    const userId = result[0].id;
+    db.query('SELECT * FROM tasks WHERE user_id = ?', [userId], (err, result) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).send('Error getting data.');
+      };
+
+      res.json(result);
+      pool.releaseConnection(db);
+      db.release();
+    });
+  });
   // Find the user by username
   const user = db.find(user => user.username === username);
   res.json(user);
